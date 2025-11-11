@@ -1,27 +1,22 @@
 # KeepMe
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
+The **KeepMe** project is a web application designed to connect individuals with service providers, particularly in the fields of babysitting, pet-sitting, and elderly care. This platform aims to provide a secure, reliable, and easy-to-use online space that allows families to quickly find trusted providers and enables sitters to efficiently manage their tasks.
 
-## Development server
+## Key Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The KeepMe web application includes the following essential features:
 
-## Code scaffolding
+- User registration and authentication
+- Provider search
+- Request sending and management
+- Secure payment
+- Ratings and reviews
+- Reporting and support
+- Profile and history management
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Development
 
-## Build
+To start the local development server:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+ng serve
