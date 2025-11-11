@@ -1,0 +1,123 @@
+<div class="login-container">
+  <div class="left-section">
+    <div class="image-overlay">
+      <img src="../../assets/image.png" alt="Family with pets" class="family-image">
+      <div class="image-caption">
+        <h3>Bienvenue chez KeepMe</h3>
+        <p>Parce que ceux que vous aimez méritent le meilleur.</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="right-section">
+    <div class="login-content">
+    <img src="../../assets/logo.png" alt="Family with pets" class="logo-image">
+
+        <div class="logo-text-container">
+        
+      </div>
+
+      <div class="login-card">
+        <div class="welcome-indicator">
+          <div class="arrow-container">
+            <svg width="320" height="250" viewBox="0 0 140 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 40 Q 50 15, 85 40 L 78 32 M 85 40 L 78 48" 
+                    stroke="#7DD3D9" 
+                    stroke-width="4" 
+                    fill="none" 
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="card-header">
+          <h2 class="card-title">Connectez-vous à votre compte</h2>
+          <p class="card-subtitle">Trouvez la personne de confiance près de chez vous.</p>
+        </div>
+        
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+          <div class="form-group">
+            <label class="input-label">E-mail</label>
+            <div class="input-container">
+              <input 
+                type="email" 
+                formControlName="email"
+                placeholder="votre@email.com"
+                class="form-input"
+                [class.error]="email?.invalid && email?.touched">
+              <span class="input-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                </svg>
+              </span>
+            </div>
+            <span class="error-message" *ngIf="email?.invalid && email?.touched">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+              </svg>
+              Veuillez entrer un email valide
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label class="input-label">Mot de passe</label>
+            <div class="input-container">
+              <input 
+                [type]="showPassword ? 'text' : 'password'"
+                formControlName="password"
+                placeholder="Votre mot de passe"
+                class="form-input"
+                [class.error]="password?.invalid && password?.touched">
+              <span class="input-icon password-toggle" (click)="togglePasswordVisibility()">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                  <path *ngIf="!showPassword" d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                  <path d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"/>
+                </svg>
+              </span>
+            </div>
+            <span class="error-message" *ngIf="password?.invalid && password?.touched">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+              </svg>
+              Le mot de passe est requis (min. 6 caractères)
+            </span>
+          </div>
+
+          <div class="form-options">
+            <a href="#" class="forgot-password" (click)="onForgotPassword($event)">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+              </svg>
+              Mot de passe oublié ?
+            </a>
+          </div>
+
+          <button type="submit" class="submit-btn" [disabled]="loginForm.invalid" [class.loading]="isLoading">
+            <span class="btn-text" *ngIf="!isLoading">Se connecter</span>
+            <span class="btn-loading" *ngIf="isLoading">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 3c-3.866 0-7 3.134-7 7 0 1.386.41 2.677 1.105 3.765l-1.105 4.235 4.235-1.105c1.088.695 2.379 1.105 3.765 1.105 3.866 0 7-3.134 7-7s-3.134-7-7-7z"/>
+              </svg>
+              Connexion...
+            </span>
+          </button>
+
+          <div class="signup-section">
+            <p class="signup-text">Vous n'avez pas de compte ?</p>
+            <a href="#" class="signup-link" (click)="onSignUp($event)">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+              </svg>
+              Créer un compte
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
