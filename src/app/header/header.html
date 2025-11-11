@@ -1,0 +1,30 @@
+<header class="header">
+  <div class="container">
+    <!-- Logo à gauche -->
+    <div class="logo">
+      <img src="/assets/logo.png" alt="KeepMe Logo" class="logo-image">
+    </div>
+    
+    <!-- Navigation à droite -->
+    <nav class="nav" [class.active]="isMenuOpen">
+      <div class="nav-links">
+        <a href="#" class="nav-link active">Accueil</a>
+        <a href="#" class="nav-link">À propos de nous</a>
+        <a href="#" class="nav-link">Services</a>
+        <a href="#" class="nav-link">Contactez-nous</a>
+      </div>
+      
+      <div class="auth-buttons">
+        <button class="btn-login">Se connecter</button>
+        <button class="btn-register">Créer un compte</button>
+      </div>
+    </nav>
+    
+    <!-- Menu burger pour mobile -->
+    <button class="menu-toggle" (click)="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
