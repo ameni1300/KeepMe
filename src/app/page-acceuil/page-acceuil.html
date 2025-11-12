@@ -1,0 +1,227 @@
+<app-header></app-header>
+<!-- Hero Section avec image de fond -->
+<section class="hero">
+  <div class="hero-overlay">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Main dans la main</h1>
+        <p>Créer du lien et offrir un soutien quotidien aux aînés grâce à un accompagnement personnalisé.</p>
+        <button class="cta-button" (click)="contactUs()">Contactez-nous</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Introduction -->
+<section class="services-intro">
+  <div class="container">
+    <h2>Trouvez la personne de confiance qu'il vous faut, quand vous en avez besoin.</h2>
+    <p>KeepMe connecte familles et prestataires fiables – babysitters, petsitters et accompagnants – en toute simplicité.</p>
+  </div>
+</section>
+
+<!-- Services Grid -->
+<section class="services-grid-section">
+  <div class="container">
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">👶</div>
+        <h3>Babysitting</h3>
+        <p>Confiez vos enfants à des babysitters de confiance, expérimentés et bienveillants.</p>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">🐾</div>
+        <h3>Pet sitting</h3>
+        <p>Offrez à vos animaux les soins et l'attention même en votre absence.</p>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">👵</div>
+        <h3>Accompagnement des personnes âgées</h3>
+        <p>KeepMe met en relation les familles avec des accompagnants attentionnés.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Avec KeepMe, trouvez la bonne personne, au bon moment.</h2>
+    <div class="cta-buttons">
+      <button 
+        class="btn-prestataire" 
+        [class.selected]="isSelected('prestataire')"
+        [class.unselected]="!isSelected('prestataire')"
+        (click)="selectButton('prestataire')">
+        Prestataire
+      </button>
+      <button 
+        class="btn-client" 
+        [class.selected]="isSelected('client')"
+        [class.unselected]="!isSelected('client')"
+        (click)="selectButton('client')">
+        Client
+      </button>
+    </div>
+
+    <!-- Espace entre les boutons et les steps -->
+    <div class="steps-spacer"></div>
+
+    <!-- Steps dynamiques selon le choix -->
+    <div class="steps-container" *ngIf="currentSteps.length > 0">
+      <!-- Boucle sur les steps -->
+      <div class="step" *ngFor="let step of currentSteps; let i = index">
+        <div class="step-content" [class.reversed]="i % 2 === 1">
+          <div class="step-image">
+            <img [src]="step.image" [alt]="step.alt">
+          </div>
+          <div class="step-description">
+            <div class="step-number">{{ step.number }}</div>
+            <h3>{{ step.title }}</h3>
+            <p>{{ step.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA dynamique -->
+    <div class="steps-cta">
+      <button class="cta-button" (click)="handleCtaClick()">
+        {{ currentCtaText }}
+      </button>
+    </div>
+  </div>
+</section>
+<!-- Nos Services Section -->
+<section class="our-services">
+  <div class="container">
+    <div class="section-header">
+      <h2>Nos Services</h2>
+    </div>
+    
+    <div class="services-grid-modern">
+      <!-- Ligne du haut -->
+      <div class="services-row">
+        <div class="service-modern-card">
+          <div class="service-header">
+            <div class="service-number">01</div>
+            <h3>Accompagnement à domicile</h3>
+          </div>
+          <p>Aide dans les activités quotidiennes : repas, ménage, courses, promenades et organisation du quotidien.</p>
+        </div>
+        
+        <div class="service-modern-card">
+          <div class="service-header">
+            <div class="service-number">02</div>
+            <h3>Compagnie et écoute</h3>
+          </div>
+          <p>Nos accompagnants partagent des moments de convivialité, de discussion et d'échange pour lutter contre l'isolement.</p>
+        </div>
+      </div>
+      
+      <!-- Ligne du bas -->
+      <div class="services-row">
+        <div class="service-modern-card">
+          <div class="service-header">
+            <div class="service-number">03</div>
+            <h3>Assistance aux déplacements</h3>
+          </div>
+          <p>Accompagnement lors des sorties, rendez-vous médicaux ou activités extérieures, en toute sécurité.</p>
+        </div>
+        
+        <div class="service-modern-card">
+          <div class="service-header">
+            <div class="service-number">04</div>
+            <h3>Soutien aux familles</h3>
+          </div>
+          <p>Mise en relation rapide avec des accompagnants fiables et formation à la communication bienveillante avec les seniors.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Avis des Clients Section -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-header">
+      <h2>Avis des clients</h2>
+    </div>
+    
+    <div class="testimonial-slider">
+      <!-- Flèche précédente -->
+      <button class="slider-arrow prev-arrow" (click)="prevTestimonial()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <!-- Conteneur du slide -->
+      <div class="slider-container">
+        <div class="slider-track" [style.transform]="'translateX(-' + (currentTestimonialIndex * 100) + '%)'">
+          <div class="testimonial-slide" *ngFor="let testimonial of testimonials">
+            <div class="testimonial-card">
+              <div class="testimonial-content">
+                <p>{{ testimonial.content }}</p>
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar">{{ testimonial.avatar }}</div>
+                <div class="author-info">
+                  <h4>{{ testimonial.author }}</h4>
+                  <p>{{ testimonial.company }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flèche suivante -->
+      <button class="slider-arrow next-arrow" (click)="nextTestimonial()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Indicateurs de pagination -->
+    <div class="slider-indicators">
+      <button 
+        *ngFor="let testimonial of testimonials; let i = index" 
+        class="indicator" 
+        [class.active]="currentTestimonialIndex === i"
+        (click)="goToTestimonial(i)">
+      </button>
+    </div>
+  </div>
+</section>
+<!-- Footer Section -->
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Section Contact -->
+    <div class="footer-contact">
+      <h3>{{ footerData.contact.title }}</h3>
+      <p>{{ footerData.contact.description }}</p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <span class="contact-icon">✉️</span>
+          <a [href]="'mailto:' + footerData.contact.email" class="contact-link">
+            {{ footerData.contact.email }}
+          </a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📞</span>
+          <a [href]="'tel:' + footerData.contact.phone" class="contact-link">
+            {{ footerData.contact.phone }}
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <h3 class="footer-brand">KeepMee</h3>
+      <p>&copy; {{ currentYear }} KeepMee. Tous droits réservés.</p>
+    </div>
+  </div>
+</footer>

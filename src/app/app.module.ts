@@ -10,6 +10,13 @@ import { CreatAccountVComponent } from './creat-account-v/creat-account-v.compon
 import { FamSideBarComponent } from './fam-side-bar/fam-side-bar.component';
 import { ServiceSearchComponent } from './service-search/service-search.component';
 import { PrestataireProfileComponent } from './prestataire-profile/prestataire-profile.component';
+import { PageAcceuil } from './page-acceuil/page-acceuil';
+import { HeroComponent } from './hero/hero.component';
+import { Header } from './header/header';
+import { ReservationComponent } from './reservation/reservation.component';
+import { MessagerieComponent } from './messagerie/messagerie.component';
+import { FormsModule } from '@angular/forms';
+import { MonProfilComponent } from './mon-profil/mon-profil.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +26,19 @@ import { PrestataireProfileComponent } from './prestataire-profile/prestataire-p
     CreatAccountVComponent,
     FamSideBarComponent,
     ServiceSearchComponent,
-    PrestataireProfileComponent
+    PrestataireProfileComponent,
+    HeroComponent,
+    PageAcceuil,
+    Header,
+    ReservationComponent,
+    MessagerieComponent,
+    MonProfilComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,159 @@
+<div class="reservations-container">
+    <app-fam-side-bar></app-fam-side-bar>
+
+  <div class="reservations-content">
+    
+    <!-- Header Section -->
+    <section class="reservations-header">
+      <div class="welcome-section">
+        <h1>Mes réservations</h1>
+        <p class="welcome-text">
+          Voici la liste de tes réservations à venir et passées. 
+          <span class="user-name">{{ userName }}</span>. 
+          Gère-les facilement en un seul clic.
+        </p>
+      </div>
+    </section>
+
+    <!-- Tabs Navigation -->
+    <section class="tabs-section">
+      <div class="tabs-navigation">
+        <button 
+          class="tab-button" 
+          [class.active]="activeTab === 'upcoming'"
+          (click)="setActiveTab('upcoming')">
+          À venir
+          <span class="tab-badge">{{ getUpcomingCount() }}</span>
+        </button>
+        
+        <button 
+          class="tab-button" 
+          [class.active]="activeTab === 'completed'"
+          (click)="setActiveTab('completed')">
+          Terminées
+          <span class="tab-badge">{{ getCompletedCount() }}</span>
+        </button>
+        
+        <button 
+          class="tab-button" 
+          [class.active]="activeTab === 'cancelled'"
+          (click)="setActiveTab('cancelled')">
+          Annulées
+          <span class="tab-badge">{{ getCancelledCount() }}</span>
+        </button>
+      </div>
+
+      <!-- Table Section -->
+      <div class="table-section">
+        <div class="table-header">
+          <div>Nom de prestataire</div>
+          <div>Travaille</div>
+          <div>Délais</div>
+          <div>Actions</div>
+        </div>
+
+        <div class="reservation-list">
+          <!-- Empty State -->
+          <div *ngIf="filteredReservations.length === 0" class="empty-state">
+            <div class="empty-icon">📅</div>
+            <div class="empty-text">Aucune réservation {{ getTabDisplayName() }}</div>
+            <div class="empty-subtext">Vous n'avez pas de réservations dans cette catégorie</div>
+          </div>
+
+          <!-- Reservation Items -->
+          <div 
+            *ngFor="let reservation of filteredReservations" 
+            class="reservation-item">
+            
+            <!-- Provider Info -->
+            <div class="reservation-cell">
+              <div class="provider-info">
+                <div class="provider-avatar">
+                  {{ reservation.providerName.charAt(0) }}
+                </div>
+                <div class="provider-details">
+                  <div class="provider-name">{{ reservation.providerName }}</div>
+                  <div class="service-type">
+                    <span class="service-icon">{{ getServiceIcon(reservation.service) }}</span>
+                    <span>{{ reservation.service }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Service Type -->
+            <div class="reservation-cell">
+              <div class="service-details">
+                <div class="detail-label">Service</div>
+                <div class="detail-value">{{ reservation.service }}</div>
+              </div>
+            </div>
+
+            <!-- Period -->
+            <div class="reservation-cell">
+              <div class="service-details">
+                <div class="detail-label">Période</div>
+                <div class="detail-value">{{ reservation.period }}</div>
+                <div *ngIf="reservation.price" class="detail-value" style="color: #e3a03b;">
+                  {{ reservation.price }}€
+                </div>
+              </div>
+            </div>
+
+            <!-- Status & Actions -->
+            <div class="reservation-cell">
+              <div class="action-section">
+                
+                
+                <div class="action-buttons">
+                  <!-- Upcoming Actions -->
+                  <ng-container *ngIf="reservation.status === 'upcoming'">
+                    <button 
+                      class="action-button primary"
+                      (click)="manageReservation(reservation)">
+                      <span>✏️</span>
+                      Modifier
+                    </button>
+                    <button 
+                      class="action-button danger"
+                      (click)="cancelReservation(reservation)">
+                      <span>❌</span>
+                      Annuler
+                    </button>
+                  </ng-container>
+
+                  <!-- Completed Actions -->
+                  <ng-container *ngIf="reservation.status === 'completed'">
+                    <button 
+                      class="action-button primary"
+                      (click)="rateReservation(reservation)">
+                      <span>⭐</span>
+                      Noter
+                    </button>
+                    <button 
+                      class="action-button secondary"
+                      (click)="contactProvider(reservation)">
+                      <span>💬</span>
+                      Contacter
+                    </button>
+                  </ng-container>
+
+                  <!-- Cancelled Actions -->
+                  <ng-container *ngIf="reservation.status === 'cancelled'">
+                    <button 
+                      class="action-button secondary"
+                      (click)="contactProvider(reservation)">
+                      <span>💬</span>
+                      Contacter
+                    </button>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
