@@ -1,0 +1,359 @@
+<div class="signup-container">
+  
+  
+  <div class="right-section">
+    <div class="signup-content">
+      <img src="../../assets/logo.png" alt="KeepMe Logo" class="logo-image">
+
+      <div class="signup-card">
+        <div class="progress-indicator">
+          <div class="progress-bar">
+            <div class="progress-fill" [style.width.%]="progress"></div>
+          </div>
+          <span class="progress-text">Étape {{currentStep}}/2</span>
+        </div>
+
+        <div class="card-header">
+          <h2 class="card-title">Créez votre compte</h2>
+          <p class="card-subtitle">Rejoignez notre communauté de confiance</p>
+        </div>
+        
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="signup-form">
+          
+          <!-- Étape 1 -->
+          <div class="form-step" *ngIf="currentStep === 1">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="input-label">
+                  Nom
+                  <span class="required-star">*</span>
+                </label>
+                <div class="input-container">
+                  <input 
+                    type="text" 
+                    formControlName="lastName"
+                    placeholder="Votre nom"
+                    class="form-input"
+                    [class.error]="lastName?.invalid && lastName?.touched">
+                  <span class="input-icon">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M10 10a5 5 0 100-10 5 5 0 000 10zM10 12c-5.523 0-10 3.582-10 8 0 1.5 1 2 2 2h16c1 0 2-.5 2-2 0-4.418-4.477-8-10-8z"/>
+                    </svg>
+                  </span>
+                </div>
+                <span class="error-message" *ngIf="lastName?.invalid && lastName?.touched">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                  </svg>
+                  Le nom est requis
+                </span>
+              </div>
+
+              <div class="form-group">
+                <label class="input-label">
+                  Prénom
+                  <span class="required-star">*</span>
+                </label>
+                <div class="input-container">
+                  <input 
+                    type="text" 
+                    formControlName="firstName"
+                    placeholder="Votre prénom"
+                    class="form-input"
+                    [class.error]="firstName?.invalid && firstName?.touched">
+                  <span class="input-icon">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M10 10a5 5 0 100-10 5 5 0 000 10zM10 12c-5.523 0-10 3.582-10 8 0 1.5 1 2 2 2h16c1 0 2-.5 2-2 0-4.418-4.477-8-10-8z"/>
+                    </svg>
+                  </span>
+                </div>
+                <span class="error-message" *ngIf="firstName?.invalid && firstName?.touched">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                  </svg>
+                  Le prénom est requis
+                </span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="input-label">
+                  Téléphone
+                  <span class="required-star">*</span>
+                </label>
+                <div class="input-container">
+                  <input 
+                    type="tel" 
+                    formControlName="phone"
+                    placeholder="+33 1 23 45 67 89"
+                    class="form-input"
+                    [class.error]="phone?.invalid && phone?.touched">
+                  <span class="input-icon">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                    </svg>
+                  </span>
+                </div>
+                <span class="error-message" *ngIf="phone?.invalid && phone?.touched">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                  </svg>
+                  Un numéro de téléphone valide est requis
+                </span>
+              </div>
+
+              <div class="form-group">
+                <label class="input-label">
+                  Genre
+                  <span class="required-star">*</span>
+                </label>
+                <div class="input-container">
+                  <select 
+                    formControlName="gender"
+                    class="form-input"
+                    [class.error]="gender?.invalid && gender?.touched">
+                    <option value="">Sélectionnez</option>
+                    <option value="male">Homme</option>
+                    <option value="female">Femme</option>
+                    <option value="other">Autre</option>
+                  </select>
+                  <span class="input-icon">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                    </svg>
+                  </span>
+                </div>
+                <span class="error-message" *ngIf="gender?.invalid && gender?.touched">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                  </svg>
+                  Le genre est requis
+                </span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="input-label">
+                État matrimonial
+                <span class="required-star">*</span>
+              </label>
+              <div class="input-container">
+                <select 
+                  formControlName="maritalStatus"
+                  class="form-input"
+                  [class.error]="maritalStatus?.invalid && maritalStatus?.touched">
+                  <option value="">Sélectionnez</option>
+                  <option value="single">Célibataire</option>
+                  <option value="married">Marié(e)</option>
+                  <option value="divorced">Divorcé(e)</option>
+                  <option value="widowed">Veuf/Veuve</option>
+                </select>
+                <span class="input-icon">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                  </svg>
+                </span>
+              </div>
+              <span class="error-message" *ngIf="maritalStatus?.invalid && maritalStatus?.touched">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                </svg>
+                L'état matrimonial est requis
+              </span>
+            </div>
+
+            <div class="form-group">
+              <label class="input-label">
+                Adresse complète
+                <span class="required-star">*</span>
+              </label>
+              <div class="input-container">
+                <input 
+                  type="text" 
+                  formControlName="address"
+                  placeholder="Votre adresse complète"
+                  class="form-input"
+                  [class.error]="address?.invalid && address?.touched">
+                <span class="input-icon">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                  </svg>
+                </span>
+              </div>
+              <span class="error-message" *ngIf="address?.invalid && address?.touched">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                </svg>
+                L'adresse est requise
+              </span>
+            </div>
+          </div>
+
+          <!-- Étape 2 -->
+          <div class="form-step" *ngIf="currentStep === 2">
+            <div class="form-group">
+              <label class="input-label">
+                E-mail
+                <span class="required-star">*</span>
+              </label>
+              <div class="input-container">
+                <input 
+                  type="email" 
+                  formControlName="email"
+                  placeholder="votre@email.com"
+                  class="form-input"
+                  [class.error]="email?.invalid && email?.touched">
+                <span class="input-icon">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                  </svg>
+                </span>
+              </div>
+              <span class="error-message" *ngIf="email?.invalid && email?.touched">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                </svg>
+                Veuillez entrer un email valide
+              </span>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="input-label">
+                  Numéro de CIN
+                  <span class="required-star">*</span>
+                </label>
+                <div class="input-container">
+                  <input 
+                    type="text" 
+                    formControlName="cin"
+                    placeholder="Votre numéro CIN"
+                    class="form-input"
+                    [class.error]="cin?.invalid && cin?.touched">
+                  <span class="input-icon">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/>
+                    </svg>
+                  </span>
+                </div>
+                <span class="error-message" *ngIf="cin?.invalid && cin?.touched">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                  </svg>
+                  Le numéro CIN est requis
+                </span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="input-label">
+                  Mot de passe
+                  <span class="required-star">*</span>
+                </label>
+                <div class="input-container">
+                  <input 
+                    [type]="showPassword ? 'text' : 'password'"
+                    formControlName="password"
+                    placeholder="Votre mot de passe"
+                    class="form-input"
+                    [class.error]="password?.invalid && password?.touched">
+                  <span class="input-icon password-toggle" (click)="togglePasswordVisibility()">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                      <path *ngIf="!showPassword" d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                      <path d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"/>
+                    </svg>
+                  </span>
+                </div>
+                <span class="error-message" *ngIf="password?.invalid && password?.touched">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                  </svg>
+                  Le mot de passe doit contenir au moins 6 caractères
+                </span>
+              </div>
+
+              <div class="form-group">
+                <label class="input-label">
+                  Confirmer le mot de passe
+                  <span class="required-star">*</span>
+                </label>
+                <div class="input-container">
+                  <input 
+                    [type]="showConfirmPassword ? 'text' : 'password'"
+                    formControlName="confirmPassword"
+                    placeholder="Confirmez votre mot de passe"
+                    class="form-input"
+                    [class.error]="confirmPassword?.invalid && confirmPassword?.touched">
+                  <span class="input-icon password-toggle" (click)="toggleConfirmPasswordVisibility()">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                      <path *ngIf="!showConfirmPassword" d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                      <path d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"/>
+                    </svg>
+                  </span>
+                </div>
+                <span class="error-message" *ngIf="confirmPassword?.invalid && confirmPassword?.touched">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                  </svg>
+                  Les mots de passe ne correspondent pas
+                </span>
+              </div>
+            </div>
+
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">
+                <input 
+                  type="checkbox" 
+                  formControlName="terms"
+                  class="checkbox-input">
+                <span class="checkbox-custom"></span>
+                J'ai lu les conditions générales et j'accepte
+                <span class="required-star">*</span>
+              </label>
+              <span class="error-message" *ngIf="terms?.invalid && terms?.touched">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                </svg>
+                Vous devez accepter les conditions générales
+              </span>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="action-btn secondary" *ngIf="currentStep === 2" (click)="previousStep()">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+              </svg>
+              Retour
+            </button>
+            
+            <button type="button" class="action-btn primary" *ngIf="currentStep === 1" (click)="nextStep()" [disabled]="!isStep1Valid()">
+              Suivant
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z" clip-rule="evenodd"/>
+              </svg>
+            </button>
+            
+            <button routerLink="/service" type="submit" class="action-btn primary" *ngIf="currentStep === 2" [disabled]="signupForm.invalid">
+              Créer mon compte
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

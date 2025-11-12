@@ -1,0 +1,112 @@
+<div class="profile-container">
+    <app-fam-side-bar></app-fam-side-bar>
+
+  <div class="profile-content">
+    
+    <!-- Header Section -->
+    <section class="profile-header">
+      <div class="avatar-section">
+    <img src="../../assets/image copy 3.png" alt="Family with pets" class="logocom-image">
+      </div>
+      
+      <div class="info-section">
+        <div class="name-section">
+          <div class="name-rating">
+            <h1>{{ babysitter.name }}</h1>
+            <div class="age">{{ babysitter.age }} ans</div>
+          </div>
+          <button class="contact-button" (click)="contactBabysitter()">
+            Contacter
+          </button>
+        </div>
+        
+        <div class="details-grid">
+          <div class="detail-item">
+            <span class="icon">📞</span>
+            <span>{{ babysitter.phone }}</span>
+          </div>
+          <div class="price-tag">
+            {{ babysitter.price }}€/{{ babysitter.priceUnit }}
+          </div>
+          <div class="detail-item">
+            <span class="icon">🕒</span>
+            <span>Disponible {{ babysitter.availability }}</span>
+          </div>
+          <div class="location">
+            <span class="icon">📍</span>
+            <span>{{ babysitter.location }}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+      <h2 class="section-title">À propos de moi</h2>
+      <p class="about-text">{{ babysitter.about }}</p>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+      <h2 class="section-title">Services proposés</h2>
+      <div class="services-grid">
+        <div class="service-tag" *ngFor="let service of babysitter.services">
+          {{ service }}
+        </div>
+      </div>
+    </section>
+
+    <!-- Education & Languages -->
+    <div class="info-grid">
+      <!-- Education Section -->
+      <section class="education-section">
+        <h2 class="section-title">Niveau d'étude</h2>
+        <div class="education-item" *ngFor="let edu of education">
+          <div class="period">{{ edu.period }}</div>
+          <div class="diploma">{{ edu.diploma }}</div>
+          <div class="certificate" *ngIf="edu.certificate">{{ edu.certificate }}</div>
+        </div>
+      </section>
+
+      <!-- Languages Section -->
+      <section class="languages-section">
+        <h2 class="section-title">Langues parlées</h2>
+        <div class="language-item" *ngFor="let lang of languages">
+          <span class="language-name">{{ lang.name }}</span>
+          <span class="language-level" [class.native]="lang.isNative">
+            {{ lang.level }}
+          </span>
+        </div>
+      </section>
+    </div>
+
+    <!-- CV Section -->
+    <section class="cv-section">
+      <button class="cv-button" (click)="downloadCV()">
+        <span>📄</span>
+        Télécharger le CV ({{ cvFile }})
+      </button>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+      <h2 class="section-title">Avis d'autres clients</h2>
+      <div class="review-item" *ngFor="let review of reviews">
+        <div class="rating-stars">
+          <span 
+            *ngFor="let star of getStars(review.rating)" 
+            class="star"
+            [class.filled]="star <= review.rating"
+            [class.empty]="star > review.rating">
+            ★
+          </span>
+          <span style="margin-left: 8px; color: #718096;">
+            {{ review.rating }}/5
+          </span>
+        </div>
+        <p class="review-comment">{{ review.comment }}</p>
+      </div>
+    </section>
+
+  </div>
+</div>

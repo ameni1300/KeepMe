@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./log-in.component.scss']
 })
 export class LogInComponent {
-
+showSignupModal: boolean = false;
+selectedAccountType: string = '';
  loginForm: FormGroup;
   showPassword: boolean = false;
   isLoading: boolean = false;
@@ -60,7 +61,39 @@ export class LogInComponent {
     // Implémentez la logique de réinitialisation de mot de passe
     alert('Fonctionnalité de réinitialisation de mot de passe à implémenter');
   }
+openSignupModal(event: Event): void {
+  event.preventDefault();
+  this.showSignupModal = true;
+  this.selectedAccountType = '';
+}
 
+closeSignupModal(event: Event): void {
+  event.preventDefault();
+  this.showSignupModal = false;
+  this.selectedAccountType = '';
+}
+
+selectAccountType(type: string): void {
+  this.selectedAccountType = type;
+}
+
+continueSignup(): void {
+  if (this.selectedAccountType) {
+    console.log('Type de compte sélectionné:', this.selectedAccountType);
+    
+    // Fermer le modal
+    this.showSignupModal = false;
+    
+    // Rediriger vers la page d'inscription appropriée
+    if (this.selectedAccountType === 'jobseeker') {
+       this.router.navigate(['/jobseekercreate']);
+    } else if (this.selectedAccountType === 'family') {
+      this.router.navigate(['/famcreate']);
+    }
+    
+    // Réinitialiser la sélection
+    this.selectedAccountType = '';
+  }}
   onSignUp(event: Event): void {
     event.preventDefault();
     console.log('Sign up clicked');
