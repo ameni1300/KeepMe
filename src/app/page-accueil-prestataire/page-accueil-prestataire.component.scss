@@ -1,0 +1,251 @@
+.page-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #fff9f5;
+  font-family: 'Poppins', sans-serif;
+}
+
+.main-content {
+  flex: 1;
+  background-color: #fff9f5;
+  padding: 20px;
+  text-align: center;
+  box-sizing: border-box;
+  margin-left: 0;
+}
+
+/* ✅ Bandeau du haut centré */
+.header {
+  background-color: #fde9df;
+  border-radius: 50px;
+  margin: 20px auto;
+  width: 90%;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.profile-icon {
+  position: absolute;
+  right: 30px;
+  background-color: white;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.profile-icon i {
+  font-size: 20px;
+}
+
+/* ✅ Calendrier */
+.calendar-container {
+  margin-top: 40px;
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.calendar-container h1 {
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.calendar-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.day-header {
+  padding: 15px 10px;
+  font-weight: 500;
+  color: #666;
+  border-right: 1px solid #e0e0e0;
+  
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.calendar-week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border-bottom: 1px solid #e0e0e0;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.calendar-day {
+  min-height: 120px;
+  padding: 8px;
+  border-right: 1px solid #e0e0e0;
+  background-color: white;
+  text-align: left;
+  
+  &:last-child {
+    border-right: none;
+  }
+  
+  &.other-month {
+    background-color: #f9f9f9;
+    color: #ccc;
+  }
+}
+
+.day-number {
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.other-month .day-number {
+  color: #ccc;
+}
+
+.appointment {
+  background-color: #fde9df;
+  border-left: 3px solid #faa57b;
+  padding: 4px 6px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  
+  &:hover {
+    background-color: #f6bfa3;
+  }
+}
+
+.appointment-time {
+  font-weight: bold;
+  color: #f46e2b;
+  font-size: 0.9em;
+}
+
+.appointment-details {
+  color: #333;
+  line-height: 1.2;
+  
+  strong {
+    color: #f0824b;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .page-container {
+    flex-direction: column;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 15px;
+  }
+
+  .header {
+    width: 95%;
+    padding: 12px;
+  }
+
+  .header h2 {
+    font-size: 20px;
+  }
+
+  .profile-icon {
+    right: 20px;
+    padding: 8px;
+  }
+
+  .calendar-container {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .calendar-day {
+    min-height: 100px;
+    padding: 4px;
+  }
+
+  .appointment {
+    font-size: 0.7em;
+    padding: 2px 4px;
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .profile-icon {
+    position: static;
+    margin-top: 10px;
+  }
+
+  .header h2 {
+    font-size: 18px;
+  }
+
+  .calendar-day {
+    min-height: 80px;
+  }
+
+  .day-header {
+    padding: 10px 5px;
+    font-size: 0.9em;
+  }
+
+  .appointment-details {
+    display: none; // Cache les détails sur très petits écrans
+  }
+
+  .appointment-time {
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-header,
+  .calendar-week {
+    grid-template-columns: repeat(7, 1fr);
+    font-size: 0.8em;
+  }
+
+  .day-header {
+    padding: 8px 2px;
+  }
+
+  .calendar-day {
+    min-height: 60px;
+    padding: 2px;
+  }
+}

@@ -1,0 +1,159 @@
+<div class="reservation-container">
+  <app-fam-side-bar></app-fam-side-bar>
+  
+  <div class="reservation-content">
+    <!-- En-tête -->
+    <div class="reservation-header">
+      <h1>Vous réservez : <span class="highlight">{{ prestation.nom }}</span> — {{ prestation.service }}</h1>
+      <p class="tarif">Tarif : <span class="price">{{ prestation.tarif }}</span> {{ prestation.periode }}</p>
+    </div>
+
+    <div class="reservation-grid">
+      <!-- Colonne gauche -->
+      <div class="left-column">
+        <!-- Détails de la prestation -->
+        <section class="details-section">
+          <h2>Détails de la prestation</h2>
+          
+          <!-- Lieu de la prestation -->
+          <div class="form-group">
+            <label for="adresse">Lieu de la prestation (adresse complète)</label>
+            <input 
+              type="text" 
+              id="adresse"
+              [(ngModel)]="details.adresse"
+              placeholder="Ex. : Rue Ibn Khiddoun, Appartement 12, Tunis"
+              class="form-input">
+          </div>
+
+          <!-- Date de la prestation -->
+          <div class="form-group">
+            <label>Date de la prestation</label>
+            
+            <!-- Navigation du calendrier -->
+            <div class="calendar-navigation">
+              <button class="nav-btn" (click)="moisPrecedent()">‹</button>
+              <span class="current-month">{{ getMoisEnCours() }}</span>
+              <button class="nav-btn" (click)="moisSuivant()">›</button>
+            </div>
+
+            <!-- Calendrier -->
+            <div class="calendar">
+              <div class="calendar-grid">
+                <div 
+                  *ngFor="let jour of joursCalendrier" 
+                  class="calendar-day"
+                  [class.disponible]="jour.disponible"
+                  [class.occupe]="!jour.disponible"
+                  [class.selectionne]="jour.selectionne"
+                  (click)="selectionnerJour(jour)">
+                  
+                  <div class="day-name">{{ jour.jourSemaine.substring(0, 3) }}</div>
+                  <div class="day-date">{{ jour.jourMois }}</div>
+                  <div class="day-month">{{ jour.mois }}</div>
+                  
+                  <!-- Indicateur de statut -->
+                  <div class="day-status">
+                    <span *ngIf="!jour.disponible" class="status-occupe">✗</span>
+                    <span *ngIf="jour.selectionne" class="status-selectionne">✓</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Légende du calendrier -->
+                <div class="calendar-legend">
+                <div class="legend-item">
+                    <div class="legend-color disponible"></div>
+                    <span>Disponible</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color occupe"></div>
+                    <span>Occupé</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color selectionne"></div>
+                    <span>Sélectionné</span>
+                </div>
+                </div>
+
+            <!-- Dates sélectionnées -->
+            <div class="selected-dates" *ngIf="joursSelectionnes.length > 0">
+              <strong>Dates sélectionnées :</strong> {{ details.date }}
+              <br>
+              <small>{{ joursSelectionnes.length }} jour(s) sélectionné(s)</small>
+            </div>
+          </div>
+
+          <!-- Durée estimée -->
+          <div class="form-group">
+            <label for="duree">Durée estimée</label>
+            <input 
+              type="text" 
+              id="duree"
+              [(ngModel)]="details.duree"
+              placeholder="Ex. : 4 heures"
+              class="form-input">
+          </div>
+        </section>
+      </div>
+
+      <!-- Colonne droite -->
+      <div class="right-column">
+        <!-- Détails spécifiques -->
+        <section class="specific-details">
+          <h2>Détails spécifiques</h2>
+          
+          <!-- Nombre d'enfants -->
+          <div class="form-group">
+            <label for="nombreEnfants">Nombre d'enfants</label>
+            <input 
+              type="number" 
+              id="nombreEnfants"
+              [(ngModel)]="details.nombreEnfants"
+              placeholder="Ex. : 2"
+              class="form-input">
+          </div>
+
+          <!-- Âge des enfants -->
+          <div class="form-group">
+            <label for="ageEnfants">Âge des enfants</label>
+            <input 
+              type="text" 
+              id="ageEnfants"
+              [(ngModel)]="details.ageEnfants"
+              placeholder="Ex. : 3 ans, 7 ans"
+              class="form-input">
+          </div>
+
+          <!-- Langues préférées -->
+          <div class="form-group">
+            <label for="langues">Langue(s) préférée(s)</label>
+            <input 
+              type="text" 
+              id="langues"
+              [(ngModel)]="details.langues"
+              placeholder="Ex. : Français, Arabe"
+              class="form-input">
+          </div>
+
+          <!-- Besoins particuliers -->
+          <div class="form-group">
+            <label for="besoinsParticuliers">Besoins particuliers (facultatif)</label>
+            <textarea 
+              id="besoinsParticuliers"
+              [(ngModel)]="details.besoinsParticuliers"
+              placeholder="Ex. : Allergie aux noix, besoin d'aide pour les devoirs, coucher à 20h"
+              class="form-textarea"
+              rows="3"></textarea>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="reservation-actions">
+      <button class="btn btn-cancel" routerLink="/messagerie">Annuler</button>
+      <button class="btn btn-validate" routerLink="/coordonnees" >Valider</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="page-container">
+  <!-- Sidebar à gauche -->
+  <app-sidebar-prestataire></app-sidebar-prestataire>
+
+  <!-- Contenu principal à droite -->
+  <div class="historique-container">
+    <div class="header">
+      <h1>Historique des Prestations</h1>
+    </div>
+
+    <div class="historique-content">
+      <div *ngFor="let client of clients" class="client-section">
+        <div class="client-name-section">
+          <div class="client-info">
+            <img [src]="client.photo" alt="photo {{client.nom}}" class="client-photo" />
+            <h2 class="client-name">{{ client.nom }}</h2>
+          </div>
+          <button class="voir-rating-btn" (click)="openRatingPopup(client)">Voir Rating ></button>
+        </div>
+
+        <div class="client-details">
+          <p class="detail-line"><i class="fa fa-map-marker"></i> {{ client.localisation }}</p>
+          <p class="detail-line"><i class="fa fa-coins"></i> {{ client.tarif }} DT /jour</p>
+          <p class="detail-line">
+            <i class="fa fa-calendar"></i>
+            {{ client.duree }} : {{ client.dateDebut }} - {{ client.dateFin }}
+          </p>
+          <p class="detail-line"><i class="fa fa-user"></i> {{ client.service }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- POPUP RATING -->
+<div class="rating-popup-backdrop" *ngIf="showRatingPopup">
+  <div class="rating-popup">
+    <h2>Rating de {{ selectedClient?.nom }}</h2>
+
+    <div class="stars">
+      <!-- Étoiles pleines -->
+      <i *ngFor="let i of [].constructor(getStars(selectedClient?.rating).filled)"
+         class="fa fa-star filled"></i>
+
+      <!-- Étoiles vides -->
+      <i *ngFor="let i of [].constructor(getStars(selectedClient?.rating).empty)"
+         class="fa fa-star-o empty"></i>
+    </div>
+
+    <p class="rating-text">
+      {{ selectedClient?.rating }} / 5 ⭐ ({{ selectedClient?.totalRatings }} avis)
+    </p>
+
+    <button class="close-popup" (click)="closeRatingPopup()">Fermer</button>
+  </div>
+</div>
+
+</div>

@@ -1,0 +1,222 @@
+<div class="page-container">
+  <!-- Sidebar à gauche -->
+  <app-sidebar-prestataire></app-sidebar-prestataire>
+
+  <!-- Contenu principal à droite -->
+  <div class="profil-main-content">
+    <!-- Section profil en haut -->
+    <div class="profil-container" *ngIf="!isEditing">
+      
+      <!-- Bouton d'édition avec stylo -->
+      <div class="edit-button-container">
+        <button class="edit-button" (click)="toggleEdit()">
+          <i class="fa fa-edit"></i> Modifier le profil
+        </button>
+      </div>
+
+      <!-- En-tête profil -->
+      <div class="profil-header">
+        <img src="assets/profile-photo.avif" alt="photo" class="profil-photo">
+        <div class="profil-info">
+          <h2>Ouday Messaadi</h2>
+          <div class="profil-rating">
+            <span>⭐ 4/5</span>
+            <span><i class="fa fa-clock"></i> 20/jour</span>
+            <span><i class="fa fa-calendar-check"></i> 7/7</span>
+          </div>
+          <div class="profil-details">
+            <span>25 ans</span>
+            <span><i class="fa fa-phone"></i> +216 92172 893</span>
+            <span><i class="fa fa-map-marker-alt"></i> Ariana</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grille du contenu profil -->
+      <div class="profil-grid">
+        <!-- Colonne gauche -->
+        <div class="profil-left">
+          <!-- À propos -->
+          <div class="profil-section">
+            <h3>À propos de moi :</h3>
+            <p>
+              Bonjour, je m'appelle Ouday, passionné depuis toujours par les animaux 🐾.<br>
+              J'ai grandi entouré de chiens, de chats et même de lapins, et j'adore prendre soin d'eux comme s'ils étaient les miens.<br>
+              Sérieux, attentionné et à l'écoute, je veille à ce que vos compagnons se sentent en confiance,
+              qu'il s'agisse d'une promenade, d'une garde à domicile ou simplement d'un moment de jeu.
+            </p>
+          </div>
+
+          <!-- Services proposés -->
+          <div class="profil-section">
+            <h3>Services proposés</h3>
+            <ul>
+              <li>Sorties de 30 minutes dans un environnement sûr</li>
+              <li>Surveillance et soins de vos animaux à domicile (repas, jeux, compagnie)</li>
+              <li>Administration de médicaments, nettoyage et suivi santé simple</li>
+            </ul>
+          </div>
+
+          <!-- Avis clients -->
+          <div class="profil-section">
+            <h3>Avis d'autres clients</h3>
+            <div class="avis">
+              <img src="assets/client1.jpg" alt="Souad" class="avis-photo">
+              <div class="avis-text">
+                <strong>Souad ⭐ 4/5</strong><br>
+                <p>Ouday a pris soin de mon chien Max pendant tout un week-end. 
+                Il m'envoyait des photos chaque jour et Max avait l'air super heureux 🐾.
+                Très ponctuel et attentionné, je recommande à 100% !</p>
+              </div>
+            </div>
+
+            <div class="avis">
+              <img src="assets/client2.jpg" alt="Eya" class="avis-photo">
+              <div class="avis-text">
+                <strong>Eya Ziri ⭐ 4/5</strong><br>
+                <p>Toujours ponctuel et à l'écoute. Excellent service !</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Colonne droite -->
+        <div class="profil-right">
+          <div class="box">
+            <h4>Niveau d'étude</h4>
+            <p><strong>2021-2022</strong><br>
+              Formation en comportement et nutrition animale (module universitaire)
+            </p>
+          </div>
+
+          <div class="box">
+            <h4>Langues parlées</h4>
+            <ul>
+              <li>Arabe <span>(Langue maternelle)</span></li>
+              <li>Français <span>(B2)</span></li>
+              <li>Anglais <span>(B2)</span></li>
+            </ul>
+          </div>
+
+          <div class="box">
+            <h4>CV</h4>
+            <a href="assets/EyaZiri-CV.pdf" download>
+              EyaZiri-CV.pdf <i class="fa fa-download"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section édition du profil -->
+    <div class="main-content" *ngIf="isEditing">
+      <!-- ======== HEADER (bandeau du haut) ======== -->
+      <div class="header">
+        <h2><i class="fa fa-leaf"></i> Un nouveau look pour votre profil <i class="fa fa-leaf"></i></h2>
+        
+      </div>
+
+      <!-- ======== SECTION AJOUTS (certif & photo) ======== -->
+      <div class="section-ajout">
+        <!-- Input caché pour certification -->
+        <input 
+          type="file" 
+          id="certificationInput" 
+          (change)="onCertificationSelected($event)" 
+          accept=".pdf,.doc,.docx,.jpg,.png"
+          style="display: none"
+        >
+        
+        <!-- Input caché pour photo -->
+        <input 
+          type="file" 
+          id="photoInput" 
+          (change)="onPhotoSelected($event)" 
+          accept=".jpg,.jpeg,.png,.gif"
+          style="display: none"
+        >
+
+        <div class="upload-box" (click)="triggerCertificationInput()">
+          <label>Ajouter une certification :</label>
+          <i class="fa fa-cloud-upload"></i>
+          <span *ngIf="selectedCertification" class="file-name">
+            {{ selectedCertification.name }}
+          </span>
+        </div>
+
+        <div class="upload-box" (click)="triggerPhotoInput()">
+          <label>Ajouter une Photo :</label>
+          <i class="fa fa-image"></i>
+          <span *ngIf="selectedPhoto" class="file-name">
+            {{ selectedPhoto.name }}
+          </span>
+        </div>
+      </div>
+
+      <!-- ======== SECTION ANNONCE ======== -->
+      <div class="annonce-section">
+        <h3>Ajouter une Annonce de travail :</h3>
+
+        <div class="annonce-grid">
+          <!-- Colonne gauche -->
+          <div class="annonce-left">
+            <label for="description">Votre description :</label>
+            <textarea 
+              id="description" 
+              placeholder="Décrivez votre service..."
+              [(ngModel)]="description"
+            ></textarea>
+
+            <label for="prix">Coût de votre service par jour :</label>
+            <div class="price-input">
+              <input 
+                type="text" 
+                id="prix" 
+                [value]="price + ' DT'" 
+                readonly
+              >
+              <button type="button" (click)="decreasePrice()">-</button>
+              <button type="button" (click)="increasePrice()">+</button>
+            </div>
+          </div>
+
+          <!-- Colonne droite -->
+          <div class="annonce-right">
+            <label for="startDate">Date de début de disponibilité :</label>
+            <input 
+              type="date" 
+              id="startDate" 
+              [(ngModel)]="startDate"
+            >
+
+            <label for="endDate">Date de fin de disponibilité :</label>
+            <input 
+              type="date" 
+              id="endDate" 
+              [(ngModel)]="endDate"
+            >
+
+            <label for="location">Localisation de disponibilité :</label>
+            <input 
+              type="text" 
+              id="location" 
+              placeholder="Entrez votre localisation..."
+              [(ngModel)]="location"
+              class="location-input"
+            >
+          </div>
+        </div>
+
+        <!-- Boutons d'action -->
+        <div class="action-buttons">
+          <button type="button" class="cancel-btn" (click)="onCancel()">
+            Annuler
+          </button>
+          <button type="button" class="submit-btn" (click)="onSubmit()">
+            Enregistrer les modifications
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

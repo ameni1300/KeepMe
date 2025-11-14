@@ -1,0 +1,193 @@
+<div class="messagerie-container">
+  <app-fam-side-bar></app-fam-side-bar>
+  <div class="messagerie-content">
+    
+    <!-- Conversations Sidebar -->
+    <div class="conversations-sidebar">
+      <div class="conversations-header">
+        <h1>Messagerie</h1>
+      </div>
+
+      <div class="conversations-list">
+        <div 
+          *ngFor="let conversation of conversations"
+          class="conversation-item"
+          [class.active]="selectedConversation?.id === conversation.id"
+          [class.unread]="conversation.unread"
+          (click)="selectConversation(conversation)">
+          
+          <div class="conversation-avatar">
+            <div class="avatar">
+              {{ conversation.name.charAt(0) }}
+            </div>
+            <div class="online-status" [class.offline]="!conversation.online"></div>
+          </div>
+
+          <div class="conversation-content">
+            <div class="conversation-header">
+              <h3 class="conversation-name">{{ conversation.name }}</h3>
+              <span class="conversation-time">{{ conversation.time }}</span>
+            </div>
+
+            <div class="conversation-service">
+              <span class="service-icon">{{ getServiceIcon(conversation.serviceType) }}</span>
+              <span class="service-type">{{ conversation.serviceType }}</span>
+            </div>
+
+            <div class="conversation-preview">
+              <p class="last-message">{{ conversation.lastMessage }}</p>
+              <span class="unread-badge" *ngIf="conversation.unread && conversation.unreadCount">
+                {{ conversation.unreadCount }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Area -->
+    <div class="chat-area" *ngIf="selectedConversation; else emptyChat">
+      
+      <!-- Chat Header -->
+      <div class="chat-header">
+        <div class="chat-header-avatar">
+          <div class="avatar">
+            {{ selectedConversation.name.charAt(0) }}
+          </div>
+          <div class="online-status" [class.offline]="!selectedConversation.online"></div>
+        </div>
+
+        <div class="chat-header-info">
+          <h2>{{ selectedConversation.name }}</h2>
+          <div class="chat-status">
+            {{ selectedConversation.online ? 'En ligne' : 'Hors ligne' }}
+          </div>
+        </div>
+
+        <div class="chat-actions">
+          <button 
+            class="action-button" 
+            title="Informations"
+            (click)="toggleInfoPopup()">
+            ⓘ
+          </button>
+        </div>
+
+        <!-- Popup Évaluer/Réserver -->
+        <div class="info-popup" *ngIf="showInfoPopup">
+          <div class="popup-content">
+            <button class="popup-btn reserve-btn" routerLink="/paiement" >
+              <span class="btn-icon">📅</span>
+              Réserver
+            </button>
+            <button class="popup-btn evaluate-btn" (click)="evaluateService()">
+              <span class="btn-icon">⭐</span>
+              Évaluer
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Messages Container -->
+      <div class="messages-container">
+        <div 
+          *ngFor="let message of messages"
+          class="message"
+          [class.received]="!message.isSender"
+          [class.sent]="message.isSender">
+          
+          <p class="message-content">{{ message.content }}</p>
+          <div class="message-time">
+            {{ message.time }}
+            <span 
+              *ngIf="message.isSender"
+              class="message-status"
+              [style.color]="getStatusColor(message.status)">
+              {{ getStatusIcon(message.status) }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input Area -->
+      <div class="input-area">
+        <div class="input-container">
+          <textarea
+            [(ngModel)]="newMessage"
+            (keypress)="onKeyPress($event)"
+            placeholder="Tapez votre message..."
+            class="message-input"
+            rows="1"></textarea>
+          
+          <button 
+            class="send-button"
+            (click)="sendMessage()"
+            [disabled]="!newMessage.trim()">
+            <span class="send-icon">➤</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty Chat State -->
+    <ng-template #emptyChat>
+      <div class="empty-chat">
+        <div class="empty-icon">💬</div>
+        <div class="empty-text">Sélectionnez une conversation</div>
+        <div class="empty-subtext">Choisissez une conversation dans la liste pour commencer à discuter</div>
+      </div>
+    </ng-template>
+
+  </div>
+
+  <!-- Overlay pour fermer les popups -->
+  <div 
+    class="popup-overlay" 
+    *ngIf="showInfoPopup || showEvaluationPopup"
+    (click)="closeInfoPopup(); closeEvaluationPopup()">
+  </div>
+
+  <!-- Popup d'Évaluation -->
+  <div class="evaluation-popup" *ngIf="showEvaluationPopup">
+    <div class="evaluation-content">
+      <div class="evaluation-header">
+        <h3>Évaluer {{ selectedConversation?.name }}</h3>
+        <button class="close-evaluation" (click)="closeEvaluationPopup()">×</button>
+      </div>
+      
+      <div class="rating-section">
+        <label>Note globale</label>
+        <div class="stars-rating">
+          <span 
+            *ngFor="let star of [1,2,3,4,5]; let i = index"
+            class="star"
+            [class.active]="i < currentRating"
+            (click)="setRating(i + 1)">
+            ★
+          </span>
+        </div>
+        <span class="rating-text">{{ getRatingText() }}</span>
+      </div>
+
+      <div class="comment-section">
+        <label>Votre commentaire</label>
+        <textarea 
+          [(ngModel)]="evaluationComment"
+          placeholder="Partagez votre expérience avec cette personne..."
+          class="comment-input"
+          rows="4">
+        </textarea>
+      </div>
+
+      <div class="evaluation-actions">
+        <button class="cancel-btn" (click)="closeEvaluationPopup()">Annuler</button>
+        <button 
+          class="validate-btn" 
+          (click)="submitEvaluation()"
+          [disabled]="currentRating === 0">
+          Valider
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

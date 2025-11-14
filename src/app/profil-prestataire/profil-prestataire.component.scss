@@ -1,0 +1,609 @@
+.page-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #fff9f5;
+  font-family: 'Poppins', sans-serif;
+}
+
+.profil-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* ===== PROFIL CONTAINER ===== */
+.profil-container {
+  background-color: #fff9f5;
+  padding: 30px 40px;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+/* ===== HEADER PROFIL ===== */
+.profil-header {
+  display: flex;
+  align-items: center;
+  background-color: #fde9df;
+  border-radius: 20px;
+  padding: 20px 30px;
+  margin-bottom: 30px;
+}
+
+.profil-photo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 25px;
+}
+
+.profil-info h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.profil-rating span,
+.profil-details span {
+  margin-right: 15px;
+  font-size: 14px;
+}
+
+.profil-rating {
+  margin-top: 8px;
+}
+
+.profil-details {
+  color: #444;
+  margin-top: 10px;
+}
+
+/* ===== GRID PROFIL ===== */
+.profil-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+/* ===== SECTIONS ===== */
+.profil-section {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.profil-section h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #333;
+}
+
+.profil-section ul {
+  padding-left: 20px;
+}
+
+.profil-section li {
+  margin-bottom: 8px;
+}
+
+/* ===== CÔTÉ DROIT ===== */
+.profil-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.box {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.box h4 {
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #333;
+}
+
+.box a {
+  text-decoration: none;
+  color: #ff7b54;
+  font-weight: 500;
+}
+
+.box a:hover {
+  text-decoration: underline;
+}
+
+/* ===== AVIS CLIENTS ===== */
+.avis {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 15px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.avis-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+  object-fit: cover;
+}
+
+.avis-text p {
+  margin: 5px 0 0 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* ===== SECTION ÉDITION PROFIL ===== */
+.main-content {
+  background-color: #fff9f5;
+  padding: 30px 40px;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
+/* ===== BANDEAU DU HAUT ===== */
+.header {
+  background-color: #fde9df;
+  border-radius: 50px;
+  margin: 20px auto;
+  width: 90%;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.header i {
+  color: #8bc34a;
+  margin: 0 10px;
+}
+
+.profile-icon {
+  position: absolute;
+  right: 30px;
+  background-color: white;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== SECTION AJOUT ===== */
+.section-ajout {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.upload-box {
+  background-color: #fde9df;
+  border: 1px solid #d9b6a3;
+  border-radius: 20px;
+  width: 280px;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.upload-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+.upload-box i {
+  font-size: 50px;
+  margin-bottom: 10px;
+  color: #ff7b54;
+}
+
+/* ===== ANNONCE DE TRAVAIL ===== */
+.annonce-section {
+  margin-top: 40px;
+  background-color: #fde9df;
+  border: 1px solid #d9b6a3;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.annonce-section h3 {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.annonce-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+/* ===== CHAMPS ET INPUTS ===== */
+label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+textarea,
+input[type="text"] {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 12px;
+  font-family: inherit;
+  resize: none;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+textarea {
+  height: 100px;
+}
+
+textarea:focus,
+input[type="text"]:focus {
+  outline: none;
+  border-color: #ff7b54;
+  box-shadow: 0 0 0 2px rgba(255, 123, 84, 0.2);
+}
+
+/* ===== SECTION PRIX ===== */
+.price-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.price-input input {
+  width: 120px;
+  text-align: center;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.price-input button {
+  border: none;
+  background-color: #ff7b54;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.price-input button:hover {
+  background-color: #e56a42;
+  transform: scale(1.1);
+}
+
+/* ===== MAP ET DISPONIBILITÉ ===== */
+.map-box img {
+  width: 100%;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  height: 150px;
+  object-fit: cover;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .profil-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .annonce-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .profil-container,
+  .main-content {
+    padding: 20px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-container {
+    flex-direction: column;
+  }
+
+  .profil-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .profil-photo {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .profil-rating,
+  .profil-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .section-ajout {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .upload-box {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .header {
+    width: 95%;
+    padding: 12px;
+  }
+
+  .header h2 {
+    font-size: 18px;
+  }
+
+  .profile-icon {
+    right: 20px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profil-container,
+  .main-content {
+    padding: 15px 20px;
+  }
+
+  .profil-header {
+    padding: 15px;
+  }
+
+  .profil-photo {
+    width: 70px;
+    height: 70px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .profile-icon {
+    position: static;
+    margin-top: 10px;
+  }
+}
+/* ===== BOUTON D'ÉDITION ===== */
+.edit-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.edit-button {
+  background-color: #ff7b54;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 24px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(255, 123, 84, 0.3);
+
+  &:hover {
+    background-color: #e56a42;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 123, 84, 0.4);
+  }
+
+  i {
+    font-size: 16px;
+  }
+}
+
+/* ===== NOM DES FICHIERS SÉLECTIONNÉS ===== */
+.file-name {
+  font-size: 12px;
+  color: #666;
+  margin-top: 8px;
+  display: block;
+  word-break: break-word;
+  max-width: 200px;
+  text-align: center;
+}
+
+/* ===== INPUTS DE DATE ===== */
+input[type="date"] {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 12px;
+  font-family: inherit;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  background-color: white;
+  
+  &:focus {
+    outline: none;
+    border-color: #ff7b54;
+    box-shadow: 0 0 0 2px rgba(255, 123, 84, 0.2);
+  }
+}
+
+/* ===== INPUT DE LOCALISATION ===== */
+.location-input {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 12px;
+  font-family: inherit;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  
+  &:focus {
+    outline: none;
+    border-color: #ff7b54;
+    box-shadow: 0 0 0 2px rgba(255, 123, 84, 0.2);
+  }
+}
+
+/* ===== BOUTONS D'ACTION ===== */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #d9b6a3;
+}
+
+.cancel-btn, .submit-btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 25px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cancel-btn {
+  background-color: #f8f9fa;
+  color: #666;
+  border: 1px solid #ddd;
+
+  &:hover {
+    background-color: #e9ecef;
+    color: #333;
+  }
+}
+
+.submit-btn {
+  background-color: #ff7b54;
+  color: white;
+  box-shadow: 0 2px 6px rgba(255, 123, 84, 0.3);
+
+  &:hover {
+    background-color: #e56a42;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 123, 84, 0.4);
+  }
+}
+
+/* ===== STYLES POUR LES INPUTS DE DATE ===== */
+.annonce-right {
+  input[type="date"] {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding: 12px;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    margin-bottom: 20px;
+    
+    &:focus {
+      border-color: #ff7b54;
+      box-shadow: 0 0 0 2px rgba(255, 123, 84, 0.2);
+    }
+  }
+}
+
+/* ===== STYLES POUR L'INPUT DE PRIX ===== */
+.price-input {
+  input[type="text"] {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 12px;
+    text-align: center;
+    font-weight: 600;
+    width: 120px;
+    
+    &:focus {
+      border-color: #ff7b54;
+      box-shadow: 0 0 0 2px rgba(255, 123, 84, 0.2);
+    }
+  }
+}
+
+/* ===== AMÉLIORATIONS RESPONSIVE POUR LES NOUVEAUX ÉLÉMENTS ===== */
+@media (max-width: 768px) {
+  .edit-button-container {
+    justify-content: center;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cancel-btn, .submit-btn {
+    width: 200px;
+  }
+
+  .file-name {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .edit-button {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+
+  .action-buttons {
+    gap: 15px;
+  }
+
+  .cancel-btn, .submit-btn {
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  .file-name {
+    font-size: 11px;
+    max-width: 120px;
+  }
+}

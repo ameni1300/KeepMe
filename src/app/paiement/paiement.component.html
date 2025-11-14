@@ -1,0 +1,184 @@
+<div class="paiement-container">
+  <app-fam-side-bar></app-fam-side-bar>
+  
+  <div class="paiement-content">
+    <!-- En-tête -->
+    <div class="paiement-header">
+      <h1>Vous réservez : <span class="highlight">{{ reservation.prestataire }}</span> — {{ reservation.service }}</h1>
+      <p class="tarif">Tarif : <span class="price">{{ reservation.total }}</span> DT</p>
+    </div>
+
+    <div class="paiement-grid">
+      <!-- Colonne gauche - Paiement -->
+      <div class="left-column">
+        <section class="paiement-section">
+          <h2>Paiement & récapitulatif</h2>
+          
+          <!-- Moyens de paiement -->
+          <div class="paiement-methodes">
+            <h3>Moyen de paiement</h3>
+            <div class="methodes-list">
+              <div 
+                *ngFor="let methode of moyensPaiement" 
+                class="methode-item"
+                [class.selected]="methode.selected"
+                (click)="selectionnerPaiement(methode)">
+                <span class="methode-icon">{{ methode.icon }}</span>
+                <span class="methode-nom">{{ methode.nom }}</span>
+                <span class="checkmark" *ngIf="methode.selected">✓</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Formulaire carte bancaire -->
+          <div class="carte-form" *ngIf="getMethodePaiementSelectionnee()?.id === 'carte'">
+            <h3>Informations de la carte</h3>
+            
+            <div class="form-group">
+              <label for="numeroCarte">Numéro de carte</label>
+              <input 
+                type="text" 
+                id="numeroCarte"
+                [(ngModel)]="carteData.numero"
+                placeholder="1234 5678 9012 3456"
+                maxlength="19"
+                class="form-input">
+            </div>
+
+            <div class="form-group">
+              <label for="nomCarte">Nom sur la carte</label>
+              <input 
+                type="text" 
+                id="nomCarte"
+                [(ngModel)]="carteData.nom"
+                placeholder="M. DUPONT Jean"
+                class="form-input">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="expiration">Date d'expiration</label>
+                <input 
+                  type="text" 
+                  id="expiration"
+                  [(ngModel)]="carteData.expiration"
+                  placeholder="MM/AA"
+                  maxlength="5"
+                  class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input 
+                  type="text" 
+                  id="cvv"
+                  [(ngModel)]="carteData.cvv"
+                  placeholder="123"
+                  maxlength="3"
+                  class="form-input">
+              </div>
+            </div>
+
+            <div class="securite-info">
+              <span class="secure-icon">🔒</span>
+              <span>Paiement sécurisé SSL</span>
+            </div>
+          </div>
+
+          <!-- Instructions pour espèces -->
+          <div class="especes-info" *ngIf="getMethodePaiementSelectionnee()?.id === 'especes'">
+            <div class="info-box">
+              <h4>💵 Paiement en espèces</h4>
+              <p>Vous réglerez directement avec le prestataire à la fin de la prestation.</p>
+              <p><strong>Montant à prévoir : {{ reservation.total }} DT</strong></p>
+            </div>
+          </div>
+
+          <!-- Instructions pour PayPal -->
+          <div class="paypal-info" *ngIf="getMethodePaiementSelectionnee()?.id === 'paypal'">
+            <div class="info-box">
+              <h4>🔵 Paiement PayPal</h4>
+              <p>Vous serez redirigé vers PayPal pour finaliser votre paiement.</p>
+              <button class="btn-paypal">Se connecter à PayPal</button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Colonne droite - Récapitulatif -->
+      <div class="right-column">
+        <section class="recap-section">
+          <h2>Récapitulatif</h2>
+          
+          <!-- Détails de la prestation -->
+          <div class="recap-details">
+            <div class="recap-item">
+              <span>Prestataire</span>
+              <span>{{ reservation.prestataire }}</span>
+            </div>
+            <div class="recap-item">
+              <span>Service</span>
+              <span>{{ reservation.service }}</span>
+            </div>
+            <div class="recap-item">
+              <span>Tarif horaire</span>
+              <span>{{ reservation.tarifHoraire }} DT/h</span>
+            </div>
+            <div class="recap-item">
+              <span>Durée estimée</span>
+              <span>{{ reservation.duree }} h</span>
+            </div>
+            <div class="recap-item total">
+              <span>Total estimé</span>
+              <span>{{ reservation.total }} DT</span>
+            </div>
+          </div>
+
+          <!-- Note sur le montant -->
+          <div class="montant-note">
+            <p>Le montant final peut varier si la durée réelle diffère.</p>
+          </div>
+
+          <!-- Politique d'annulation -->
+          <div class="politique-section">
+            <h3>Politique d'annulation</h3>
+            <div class="politique-content">
+              <div class="politique-item">
+                <span class="politique-icon">🆓</span>
+                <span>Annulation gratuite jusqu'à {{ politiqueAnnulation.gratuitJusqua }}</span>
+              </div>
+              <div class="politique-item">
+                <span class="politique-icon">⚠️</span>
+                <span>Annulation tardive = {{ politiqueAnnulation.penalite }} du montant</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Informations de contact -->
+          <div class="contact-info">
+            <h3>Besoin d'aide ?</h3>
+            <p>Contactez notre service client :</p>
+            <div class="contact-methods">
+              <div class="contact-item">
+                <span>📞</span>
+                <span>+216 12 345 678</span>
+              </div>
+              <div class="contact-item">
+                <span>✉️</span>
+                <span>support@keepme.tn</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="paiement-actions">
+      <button class="btn btn-cancel" (click)="annulerPaiement()">Annuler</button>
+      <button class="btn btn-validate" routerLink="/respres" >
+        Payer {{ reservation.total }} DT
+      </button>
+    </div>
+  </div>
+</div>

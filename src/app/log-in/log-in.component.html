@@ -109,14 +109,62 @@
 
           <div class="signup-section">
             <p class="signup-text">Vous n'avez pas de compte ?</p>
-            <a href="#" class="signup-link" (click)="onSignUp($event)">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <a href="#" class="signup-link" (click)="openSignupModal($event)">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-              </svg>
-              Créer un compte
+                </svg>
+                Créer un compte
             </a>
-          </div>
+            </div>
         </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" *ngIf="showSignupModal" (click)="closeSignupModal($event)">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+    <img src="../../assets/logo.png" alt="Family with pets" class="logocom-image">
+      <button class="modal-close" (click)="closeSignupModal($event)">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="modal-body">
+      <p class="modal-subtitle">Sélectionnez l'option qui vous correspond :</p>
+      
+      <div class="option-cards">
+        <div class="option-card" (click)="selectAccountType('jobseeker')" 
+             [class.selected]="selectedAccountType === 'jobseeker'">
+          <div class="option-icon">
+                <img src="../../assets/image copy.png" alt="Family with pets" class="logolm-image">
+
+          </div>
+          <h3 class="option-title">Freelance en recherche d'emploi</h3>
+          <p class="option-description">Je cherche des opportunités de travail</p>
+        </div>
+        
+        <div class="option-card" (click)="selectAccountType('family')" 
+             [class.selected]="selectedAccountType === 'family'">
+          <div class="option-icon">
+             <img src="../../assets/image copy 2.png" alt="Family with pets" class="logolm-image">
+
+          </div>
+          <h3 class="option-title">Famille en recherche d'aide</h3>
+          <p class="option-description">Je cherche de l'aide pour ma famille</p>
+        </div>
+      </div>
+      
+      <div class="modal-actions">
+        <button class="modal-btn primary" (click)="continueSignup()" [disabled]="!selectedAccountType">
+          Continuer
+        </button>
+        <button class="modal-btn secondary" (click)="closeSignupModal($event)">
+          Annuler
+        </button>
       </div>
     </div>
   </div>

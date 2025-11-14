@@ -1,0 +1,134 @@
+.page-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #fff9f5;
+  font-family: 'Poppins', sans-serif;
+}
+
+.invitations-container {
+  margin: left 50px;
+  padding: 40px 60px;
+  padding-bottom: 80px; /* <-- ajoute de l'espace en bas */
+  width: calc(100% - 260px);
+  box-sizing: border-box;
+}
+
+
+.proposition-card {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  border: 1px solid #f5d2c3;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: 0.3s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  }
+}
+
+.client-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .client-info {
+    display: flex;
+    flex-direction: column;
+
+    .client-name {
+      font-size: 22px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .role {
+      color: #ff7b54;
+      font-weight: 600;
+      margin-top: 5px;
+    }
+  }
+
+  .infos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    p {
+      background: #f8f9fa;
+      padding: 8px 15px;
+      border-radius: 10px;
+      border: 1px solid #e9ecef;
+      font-size: 15px;
+      color: #333;
+
+      i {
+        color: #ff7b54;
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  button {
+    padding: 10px 22px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+  }
+
+  .btn-accept {
+    background: #ff7b54;
+    color: white;
+
+    &:hover {
+      background: #ff6333;
+    }
+
+    &:disabled {
+      background: #ffc3af;
+      cursor: not-allowed;
+    }
+  }
+
+  .btn-refuse {
+    background: #fde9df;
+    color: #ff7b54;
+    border: 1px solid #ff7b54;
+
+    &:hover {
+      background: #ff7b54;
+      color: white;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+
+  .btn-message {
+    background: #fff9f5;
+    border: 1px solid #ddd;
+    color: #666;
+
+    &:hover {
+      background: #fde9df;
+      border-color: #ff7b54;
+      color: #ff7b54;
+    }
+  }
+}
