@@ -6,14 +6,45 @@
   <div class="main-content">
     <div class="header">
       <h2>Bienvenue Mr Ouday Messaadi</h2>
-      <div class="profile-icon">
-        <i class="fa fa-user-circle"></i>
-      </div>
+     
     </div>
 
     <div class="calendar-container">
-      <h1>Janvier 2026</h1>
-      <img src="assets/calendrier.png" alt="Calendrier" class="calendar-img">
+      <h1>{{ getMonthYearString() | titlecase }}</h1>
+      
+      <div class="calendar">
+        <!-- En-têtes des jours de la semaine -->
+        <div class="calendar-header">
+          <div class="day-header" *ngFor="let day of ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']">
+            {{ day }}
+          </div>
+        </div>
+
+        <!-- Semaines du calendrier -->
+        <div class="calendar-week" *ngFor="let week of weeks">
+          <div 
+            class="calendar-day" 
+            *ngFor="let day of week"
+            [class.other-month]="!isCurrentMonth(day)"
+          >
+            <div class="day-number">{{ day.getDate() }}</div>
+            
+            <!-- Rendez-vous pour ce jour -->
+            <div 
+              class="appointment" 
+              *ngFor="let appointment of getAppointmentsForDate(day)"
+            >
+              <div class="appointment-time">{{ appointment.time }}</div>
+              <div class="appointment-details">
+                <strong>Pet-setting</strong><br>
+                {{ appointment.location }}<br>
+                {{ appointment.client }}<br>
+                <span *ngIf="appointment.duration">{{ appointment.duration }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

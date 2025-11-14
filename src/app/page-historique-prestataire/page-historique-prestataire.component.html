@@ -15,7 +15,7 @@
             <img [src]="client.photo" alt="photo {{client.nom}}" class="client-photo" />
             <h2 class="client-name">{{ client.nom }}</h2>
           </div>
-          <button class="voir-rating-btn" >Voir Rating ></button>
+          <button class="voir-rating-btn" (click)="openRatingPopup(client)">Voir Rating ></button>
         </div>
 
         <div class="client-details">
@@ -30,4 +30,27 @@
       </div>
     </div>
   </div>
+  <!-- POPUP RATING -->
+<div class="rating-popup-backdrop" *ngIf="showRatingPopup">
+  <div class="rating-popup">
+    <h2>Rating de {{ selectedClient?.nom }}</h2>
+
+    <div class="stars">
+      <!-- Étoiles pleines -->
+      <i *ngFor="let i of [].constructor(getStars(selectedClient?.rating).filled)"
+         class="fa fa-star filled"></i>
+
+      <!-- Étoiles vides -->
+      <i *ngFor="let i of [].constructor(getStars(selectedClient?.rating).empty)"
+         class="fa fa-star-o empty"></i>
+    </div>
+
+    <p class="rating-text">
+      {{ selectedClient?.rating }} / 5 ⭐ ({{ selectedClient?.totalRatings }} avis)
+    </p>
+
+    <button class="close-popup" (click)="closeRatingPopup()">Fermer</button>
+  </div>
+</div>
+
 </div>

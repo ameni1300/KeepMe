@@ -5,7 +5,15 @@
   <!-- Contenu principal à droite -->
   <div class="profil-main-content">
     <!-- Section profil en haut -->
-    <div class="profil-container">
+    <div class="profil-container" *ngIf="!isEditing">
+      
+      <!-- Bouton d'édition avec stylo -->
+      <div class="edit-button-container">
+        <button class="edit-button" (click)="toggleEdit()">
+          <i class="fa fa-edit"></i> Modifier le profil
+        </button>
+      </div>
+
       <!-- En-tête profil -->
       <div class="profil-header">
         <img src="assets/profile-photo.avif" alt="photo" class="profil-photo">
@@ -100,26 +108,48 @@
       </div>
     </div>
 
-    <!-- Section édition du profil en bas -->
-    <div class="main-content">
+    <!-- Section édition du profil -->
+    <div class="main-content" *ngIf="isEditing">
       <!-- ======== HEADER (bandeau du haut) ======== -->
       <div class="header">
         <h2><i class="fa fa-leaf"></i> Un nouveau look pour votre profil <i class="fa fa-leaf"></i></h2>
-        <div class="profile-icon">
-          <i class="fa fa-user"></i>
-        </div>
+        
       </div>
 
       <!-- ======== SECTION AJOUTS (certif & photo) ======== -->
       <div class="section-ajout">
-        <div class="upload-box">
+        <!-- Input caché pour certification -->
+        <input 
+          type="file" 
+          id="certificationInput" 
+          (change)="onCertificationSelected($event)" 
+          accept=".pdf,.doc,.docx,.jpg,.png"
+          style="display: none"
+        >
+        
+        <!-- Input caché pour photo -->
+        <input 
+          type="file" 
+          id="photoInput" 
+          (change)="onPhotoSelected($event)" 
+          accept=".jpg,.jpeg,.png,.gif"
+          style="display: none"
+        >
+
+        <div class="upload-box" (click)="triggerCertificationInput()">
           <label>Ajouter une certification :</label>
           <i class="fa fa-cloud-upload"></i>
+          <span *ngIf="selectedCertification" class="file-name">
+            {{ selectedCertification.name }}
+          </span>
         </div>
 
-        <div class="upload-box">
+        <div class="upload-box" (click)="triggerPhotoInput()">
           <label>Ajouter une Photo :</label>
           <i class="fa fa-image"></i>
+          <span *ngIf="selectedPhoto" class="file-name">
+            {{ selectedPhoto.name }}
+          </span>
         </div>
       </div>
 
@@ -131,26 +161,60 @@
           <!-- Colonne gauche -->
           <div class="annonce-left">
             <label for="description">Votre description :</label>
-            <textarea id="description" placeholder="Décrivez votre service..."></textarea>
+            <textarea 
+              id="description" 
+              placeholder="Décrivez votre service..."
+              [(ngModel)]="description"
+            ></textarea>
 
             <label for="prix">Coût de votre service par jour :</label>
             <div class="price-input">
-              <input type="text" id="prix" placeholder="DT">
-              <button>-</button>
-              <button>+</button>
+              <input 
+                type="text" 
+                id="prix" 
+                [value]="price + ' DT'" 
+                readonly
+              >
+              <button type="button" (click)="decreasePrice()">-</button>
+              <button type="button" (click)="increasePrice()">+</button>
             </div>
           </div>
 
           <!-- Colonne droite -->
           <div class="annonce-right">
-            <label for="disponibilite">Date de disponibilité :</label>
-            <input type="text" id="disponibilite" placeholder="Sélectionnez vos dates">
+            <label for="startDate">Date de début de disponibilité :</label>
+            <input 
+              type="date" 
+              id="startDate" 
+              [(ngModel)]="startDate"
+            >
 
-            <label for="map">Localisation de disponibilité :</label>
-            <div class="map-box">
-              <img src="assets/map.png" alt="Carte de disponibilité">
-            </div>
+            <label for="endDate">Date de fin de disponibilité :</label>
+            <input 
+              type="date" 
+              id="endDate" 
+              [(ngModel)]="endDate"
+            >
+
+            <label for="location">Localisation de disponibilité :</label>
+            <input 
+              type="text" 
+              id="location" 
+              placeholder="Entrez votre localisation..."
+              [(ngModel)]="location"
+              class="location-input"
+            >
           </div>
+        </div>
+
+        <!-- Boutons d'action -->
+        <div class="action-buttons">
+          <button type="button" class="cancel-btn" (click)="onCancel()">
+            Annuler
+          </button>
+          <button type="button" class="submit-btn" (click)="onSubmit()">
+            Enregistrer les modifications
+          </button>
         </div>
       </div>
     </div>

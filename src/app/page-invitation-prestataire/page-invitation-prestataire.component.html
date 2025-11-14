@@ -1,8 +1,6 @@
 <div class="page-container">
-  <!-- Sidebar à gauche -->
   <app-sidebar-prestataire></app-sidebar-prestataire>
 
-  <!-- Contenu principal à droite -->
   <div class="invitations-container">
     <div class="header">
       <h1>Invitations</h1>
@@ -10,88 +8,47 @@
     </div>
 
     <div class="invitations-list">
-      
-      <!-- Proposition 1 -->
-      <div class="proposition-card">
-        <div class="card-header">
-          <h3>Proposition 1</h3>
-        </div>
+
+      <div *ngFor="let inv of invitations" class="proposition-card">
         
-        <div class="proposition-details">
-          <table>
-            <tr>
-              <th>Date et Heure :</th>
-              <td>18/12/2025 15:00h</td>
-            </tr>
-            <tr>
-              <th>Durée :</th>
-              <td>3 jours</td>
-            </tr>
-            <tr>
-              <th>Localisation :</th>
-              <td>
-                <span class="checkmark">✔</span>
-              </td>
-            </tr>
-            <tr>
-              <th>Au profit de :</th>
-              <td>
-                <button class="profile-btn">Visitez profil</button>
-              </td>
-            </tr>
-            <tr>
-              <th>Role :</th>
-              <td>Pet-sitting</td>
-            </tr>
-          </table>
+        <div class="client-section">
+          <div class="client-info">
+            <h2 class="client-name">
+              {{ inv.clientNom }} —
+              <span *ngIf="inv.role === 'Baby-sitting'">
+                {{ inv.enfants }} enfant(s)
+              </span>
+              <span *ngIf="inv.role === 'Pet-sitting'">
+                {{ inv.animal }}
+              </span>
+            </h2>
+            <p class="role">{{ inv.role }}</p>
+          </div>
+
+          <div class="infos">
+            <p><i class="fa fa-map-marker"></i> {{ inv.localisation }}</p>
+            <p><i class="fa fa-calendar"></i> {{ inv.dateDebut }} → {{ inv.dateFin }}</p>
+            <p><i class="fa fa-hourglass"></i> {{ inv.duree }}</p>
+            <p><i class="fa fa-clock-o"></i> Invitation envoyée le : {{ inv.dateEnvoi }}</p>
+          </div>
         </div>
 
         <div class="action-buttons">
-          <button class="btn-accept">Accepter</button>
-          <button class="btn-refuse">Refuser</button>
-          <button class="btn-message">Passer au message</button>
-        </div>
-      </div>
+          <button class="btn-accept"
+                  (click)="accepter(inv)"
+                  [disabled]="inv.statut === 'accepte'">
+            Accepter
+          </button>
 
-      <!-- Proposition 2 -->
-      <div class="proposition-card">
-        <div class="card-header">
-          <h3>Proposition 2</h3>
-        </div>
-        
-        <div class="proposition-details">
-          <table>
-            <tr>
-              <th>Date et Heure :</th>
-              <td>20/12/2025 16:00h</td>
-            </tr>
-            <tr>
-              <th>Durée :</th>
-              <td>1 jour</td>
-            </tr>
-            <tr>
-              <th>Localisation :</th>
-              <td>
-                <span class="checkmark">✔</span>
-              </td>
-            </tr>
-            <tr>
-              <th>Au profit de :</th>
-              <td>
-                <button class="profile-btn">Visitez profil</button>
-              </td>
-            </tr>
-            <tr>
-              <th>Role :</th>
-              <td>Pet-sitting</td>
-            </tr>
-          </table>
-        </div>
+          <button class="btn-refuse"
+                  (click)="refuser(inv)"
+                  [disabled]="inv.statut === 'accepte'">
+            Refuser
+          </button>
 
-        <div class="action-buttons">
-          <button class="btn-accept">Accepter</button>
-          <button class="btn-refuse">Refuser</button>
-          <button class="btn-message">Passer au message</button>
+          <button class="btn-message" (click)="goToMessages()">
+            Passer au message
+          </button>
         </div>
       </div>
 

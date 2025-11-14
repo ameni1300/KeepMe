@@ -30,7 +30,7 @@ export class PrestataireProfileComponent {
     priceUnit: 'jour',
     availability: '7/7',
     location: 'Ariana',
-    about: `Bonjour, je m'appelle Eye, j'ai 25 ans et je suis passionnée par le contact avec les enfants. J'ai plus de 3 ans d'expérience en garde d'enfants à domicile et en animation dans les centres de loisirs. Je suis patiente, ponctuelle et toujours à l'écoute des besoins des enfants et des parents. Je peux aider aux devoirs, préparer les repas et organiser des activités ludiques adaptées à l'âge de vos enfants.`,
+    about: `Bonjour, je m'appelle Eya, j'ai 25 ans et je suis passionnée par le contact avec les enfants. J'ai plus de 3 ans d'expérience en garde d'enfants à domicile et en animation dans les centres de loisirs. Je suis patiente, ponctuelle et toujours à l'écoute des besoins des enfants et des parents. Je peux aider aux devoirs, préparer les repas et organiser des activités ludiques adaptées à l'âge de vos enfants.`,
     services: [
       'Garde à domicile',
       'Aide aux devoirs',
