@@ -1,5 +1,5 @@
 <div class="messagerie-container">
-    <app-fam-side-bar></app-fam-side-bar>
+  <app-fam-side-bar></app-fam-side-bar>
   <div class="messagerie-content">
     
     <!-- Conversations Sidebar -->
@@ -65,7 +65,26 @@
         </div>
 
         <div class="chat-actions">
-          <button class="action-button" title="Informations">ⓘ</button>
+          <button 
+            class="action-button" 
+            title="Informations"
+            (click)="toggleInfoPopup()">
+            ⓘ
+          </button>
+        </div>
+
+        <!-- Popup Évaluer/Réserver -->
+        <div class="info-popup" *ngIf="showInfoPopup">
+          <div class="popup-content">
+            <button class="popup-btn reserve-btn" routerLink="/paiement" >
+              <span class="btn-icon">📅</span>
+              Réserver
+            </button>
+            <button class="popup-btn evaluate-btn" (click)="evaluateService()">
+              <span class="btn-icon">⭐</span>
+              Évaluer
+            </button>
+          </div>
         </div>
       </div>
 
@@ -119,5 +138,56 @@
       </div>
     </ng-template>
 
+  </div>
+
+  <!-- Overlay pour fermer les popups -->
+  <div 
+    class="popup-overlay" 
+    *ngIf="showInfoPopup || showEvaluationPopup"
+    (click)="closeInfoPopup(); closeEvaluationPopup()">
+  </div>
+
+  <!-- Popup d'Évaluation -->
+  <div class="evaluation-popup" *ngIf="showEvaluationPopup">
+    <div class="evaluation-content">
+      <div class="evaluation-header">
+        <h3>Évaluer {{ selectedConversation?.name }}</h3>
+        <button class="close-evaluation" (click)="closeEvaluationPopup()">×</button>
+      </div>
+      
+      <div class="rating-section">
+        <label>Note globale</label>
+        <div class="stars-rating">
+          <span 
+            *ngFor="let star of [1,2,3,4,5]; let i = index"
+            class="star"
+            [class.active]="i < currentRating"
+            (click)="setRating(i + 1)">
+            ★
+          </span>
+        </div>
+        <span class="rating-text">{{ getRatingText() }}</span>
+      </div>
+
+      <div class="comment-section">
+        <label>Votre commentaire</label>
+        <textarea 
+          [(ngModel)]="evaluationComment"
+          placeholder="Partagez votre expérience avec cette personne..."
+          class="comment-input"
+          rows="4">
+        </textarea>
+      </div>
+
+      <div class="evaluation-actions">
+        <button class="cancel-btn" (click)="closeEvaluationPopup()">Annuler</button>
+        <button 
+          class="validate-btn" 
+          (click)="submitEvaluation()"
+          [disabled]="currentRating === 0">
+          Valider
+        </button>
+      </div>
+    </div>
   </div>
 </div>

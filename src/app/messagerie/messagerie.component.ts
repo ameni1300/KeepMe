@@ -100,8 +100,73 @@ export class MessagerieComponent {
     }
   ];
 
+  // Propriétés pour les popups
+  showInfoPopup: boolean = false;
+  showEvaluationPopup: boolean = false;
+  currentRating: number = 0;
+  evaluationComment: string = '';
   newMessage: string = '';
 
+  // Méthodes pour le popup d'information
+  toggleInfoPopup() {
+    this.showInfoPopup = !this.showInfoPopup;
+  }
+
+  closeInfoPopup() {
+    this.showInfoPopup = false;
+  }
+
+  reserveService() {
+    this.closeInfoPopup();
+    console.log('Réservation du service avec:', this.selectedConversation?.name);
+    alert(`Réservation avec ${this.selectedConversation?.name}`);
+  }
+
+  // Méthodes pour le popup d'évaluation
+  evaluateService() {
+    this.closeInfoPopup();
+    this.showEvaluationPopup = true;
+  }
+
+  closeEvaluationPopup() {
+    this.showEvaluationPopup = false;
+    this.currentRating = 0;
+    this.evaluationComment = '';
+  }
+
+  setRating(rating: number) {
+    this.currentRating = rating;
+  }
+
+  getRatingText(): string {
+    const ratings = [
+      '',
+      'Pas terrible',
+      'Moyen',
+      'Bien',
+      'Très bien',
+      'Excellent'
+    ];
+    return ratings[this.currentRating] || '';
+  }
+
+  submitEvaluation() {
+    if (this.currentRating === 0) return;
+
+    const evaluation = {
+      userId: this.selectedConversation?.id,
+      userName: this.selectedConversation?.name,
+      rating: this.currentRating,
+      comment: this.evaluationComment,
+      date: new Date()
+    };
+
+    console.log('Évaluation soumise:', evaluation);
+    alert(`Évaluation de ${evaluation.rating} étoiles envoyée pour ${evaluation.userName}`);
+    this.closeEvaluationPopup();
+  }
+
+  // Méthodes pour la messagerie
   getServiceIcon(serviceType: string): string {
     switch (serviceType.toLowerCase()) {
       case 'babysitter':
@@ -117,7 +182,6 @@ export class MessagerieComponent {
 
   selectConversation(conversation: Conversation) {
     this.selectedConversation = conversation;
-    // En production, vous chargeriez les messages depuis une API
     this.markAsRead(conversation);
   }
 

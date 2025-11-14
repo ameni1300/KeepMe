@@ -1,0 +1,530 @@
+.reservation-container {
+  margin-left: 360px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 20px;
+}
+
+.reservation-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+.calendar-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 8px;
+
+  .current-month {
+    font-weight: 600;
+    color: #2d3748;
+    font-size: 16px;
+  }
+
+  .nav-btn {
+    background: #e3a03b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #d68910;
+      transform: scale(1.1);
+    }
+
+    &:disabled {
+      background: #a0aec0;
+      cursor: not-allowed;
+      transform: none;
+    }
+  }
+}
+
+// Grille du calendrier
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+// Jours du calendrier
+.calendar-day {
+  padding: 10px 6px;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+  border: 2px solid #e2e8f0;
+  position: relative;
+  min-height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  // Jour disponible
+  &.disponible {
+    border-color: #c6f6d5;
+
+    &:hover {
+      border-color: #48bb78;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(72, 187, 120, 0.2);
+    }
+
+    &.selectionne {
+      background: #48bb78;
+      color: white;
+      border-color: #48bb78;
+
+      .day-name,
+      .day-date,
+      .day-month {
+        color: white;
+      }
+    }
+  }
+
+  // Jour occupé
+  &.occupe {
+    background: #f7fafc;
+    border-color: #fed7d7;
+    cursor: not-allowed;
+    opacity: 0.6;
+
+    .day-name,
+    .day-date,
+    .day-month {
+      color: #a0aec0;
+      text-decoration: line-through;
+    }
+  }
+
+  .day-name {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    color: #718096;
+  }
+
+  .day-date {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 2px;
+    color: #2d3748;
+  }
+
+  .day-month {
+    font-size: 9px;
+    color: #718096;
+    margin-bottom: 4px;
+  }
+
+  .day-status {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+
+    .status-occupe {
+      color: #e53e3e;
+      font-size: 10px;
+      font-weight: bold;
+    }
+
+    .status-selectionne {
+      color: white;
+      font-size: 10px;
+      font-weight: bold;
+    }
+  }
+}
+
+// Dates sélectionnées
+.selected-dates {
+  background: #f0fff4;
+  border: 1px solid #c6f6d5;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 10px;
+
+  strong {
+    color: #2d3748;
+  }
+
+  small {
+    color: #718096;
+    font-size: 12px;
+  }
+}
+
+// Légende du calendrier
+.calendar-legend {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+  font-size: 12px;
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    .legend-color {
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+
+      &.disponible {
+        background: #c6f6d5;
+        border: 1px solid #48bb78;
+      }
+
+      &.occupe {
+        background: #fed7d7;
+        border: 1px solid #e53e3e;
+      }
+
+      &.selectionne {
+        background: #48bb78;
+        border: 1px solid #48bb78;
+      }
+    }
+  }
+}
+
+// Responsive Design pour le calendrier
+@media (max-width: 768px) {
+  .calendar-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+  }
+
+  .calendar-day {
+    padding: 8px 4px;
+    min-height: 60px;
+
+    .day-name {
+      font-size: 9px;
+    }
+
+    .day-date {
+      font-size: 12px;
+    }
+
+    .day-month {
+      font-size: 8px;
+    }
+  }
+
+  .calendar-navigation {
+    .current-month {
+      font-size: 14px;
+    }
+
+    .nav-btn {
+      width: 28px;
+      height: 28px;
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .calendar-legend {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+}
+// En-tête
+.reservation-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #e2e8f0;
+
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a202c;
+    margin: 0 0 10px 0;
+  }
+
+  .highlight {
+    color: #e3a03b;
+  }
+
+  .tarif {
+    font-size: 20px;
+    color: #4a5568;
+    margin: 0;
+  }
+
+  .price {
+    font-weight: 700;
+    color: #e3a03b;
+  }
+}
+
+// Grille principale
+.reservation-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+// Sections
+.details-section,
+.specific-details {
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a202c;
+    margin: 0 0 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+}
+
+// Groupes de formulaire
+.form-group {
+  margin-bottom: 25px;
+
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 8px;
+  }
+}
+
+// Champs de formulaire
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background: #f7fafc;
+
+  &:focus {
+    outline: none;
+    border-color: #e3a03b;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(226, 160, 59, 0.1);
+  }
+
+  &::placeholder {
+    color: #a0aec0;
+  }
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+// Calendrier
+.calendar {
+  background: #f7fafc;
+  border-radius: 12px;
+  padding: 20px;
+  border: 2px solid #e2e8f0;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.calendar-day {
+  padding: 12px 8px;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+  border: 2px solid transparent;
+
+  &:hover {
+    border-color: #e3a03b;
+    transform: translateY(-2px);
+  }
+
+  &.selected {
+    background: #e3a03b;
+    color: white;
+    border-color: #e3a03b;
+  }
+
+  .day-name {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    opacity: 0.7;
+  }
+
+  .day-date {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .day-month {
+    font-size: 10px;
+    opacity: 0.7;
+  }
+}
+
+// Actions
+.reservation-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 30px;
+  border-top: 2px solid #e2e8f0;
+}
+
+.btn {
+  padding: 14px 40px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 140px;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn-cancel {
+  background: #f7fafc;
+  color: #4a5568;
+  border: 2px solid #e2e8f0;
+
+  &:hover {
+    background: #edf2f7;
+    border-color: #cbd5e0;
+  }
+}
+
+.btn-validate {
+  background: linear-gradient(135deg, #e3a03b 0%, #d68910 100%);
+  color: white;
+
+  &:hover {
+    box-shadow: 0 8px 25px rgba(226, 160, 59, 0.4);
+  }
+}
+
+// Responsive Design
+@media (max-width: 1024px) {
+  .reservation-container {
+    margin-left: 0;
+  }
+
+  .reservation-content {
+    margin: 20px;
+    padding: 30px;
+  }
+
+  .reservation-grid {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .reservation-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .calendar-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .reservation-content {
+    padding: 20px;
+    margin: 10px;
+  }
+
+  .reservation-header {
+    h1 {
+      font-size: 24px;
+    }
+
+    .tarif {
+      font-size: 18px;
+    }
+  }
+
+  .reservation-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .reservation-content {
+    padding: 16px;
+  }
+
+  .reservation-header {
+    h1 {
+      font-size: 20px;
+    }
+
+    .tarif {
+      font-size: 16px;
+    }
+  }
+}

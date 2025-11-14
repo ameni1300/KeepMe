@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
 interface Review {
   rating: number;
   comment: string;
@@ -65,15 +65,12 @@ export class PrestataireProfileComponent {
   ];
 
   cvFile = 'EyeZiri-CV.pdf';
-
+  constructor(private router: Router) {}
   getStars(rating: number): number[] {
     return Array(5).fill(0).map((_, i) => i + 1);
   }
 
-  contactBabysitter() {
-    console.log('Contacter le babysitter:', this.babysitter.name);
-    // Logique pour contacter le babysitter
-  }
+  
 
   downloadCV() {
     console.log('Télécharger le CV:', this.cvFile);

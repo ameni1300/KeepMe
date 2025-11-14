@@ -1,0 +1,120 @@
+<div class="coordonnees-container">
+  <app-fam-side-bar></app-fam-side-bar>
+  
+  <div class="coordonnees-content">
+    <!-- En-tête -->
+    <div class="coordonnees-header">
+      <h1>Vous réservez : <span class="highlight">{{ reservation.prestataire }}</span> — {{ reservation.service }}</h1>
+      <p class="tarif">Tarif : <span class="price">{{ reservation.tarif }}</span> DT</p>
+    </div>
+
+    <div class="coordonnees-grid">
+      <!-- Colonne principale -->
+      <div class="main-column">
+        <section class="coordonnees-section">
+          <h2>Vos Coordonnées</h2>
+          
+          <!-- Nom complet -->
+          <div class="form-group">
+            <label for="nomComplet">Nom complet</label>
+            <input 
+              type="text" 
+              id="nomComplet"
+              [(ngModel)]="coordonnees.nomComplet"
+              placeholder="Votre nom complet"
+              class="form-input">
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input 
+              type="email" 
+              id="email"
+              [(ngModel)]="coordonnees.email"
+              placeholder="votre@email.com"
+              class="form-input">
+          </div>
+
+          <!-- Téléphone -->
+          <div class="form-group">
+            <label for="telephone">Téléphone</label>
+            <input 
+              type="tel" 
+              id="telephone"
+              [value]="coordonnees.telephone"
+              (input)="formaterTelephone($event)"
+              placeholder="Ex : 92 156 842"
+              maxlength="10"
+              class="form-input">
+            <small class="hint">Format tunisien : 9X XXX XXX ou 2X XXX XXX ou 5X XXX XXX</small>
+          </div>
+
+          <!-- Méthode de contact -->
+          <div class="contact-methodes">
+            <h3>Comment souhaitez-vous être contacté pour confirmation ?</h3>
+            <div class="methodes-list">
+              <div 
+                *ngFor="let methode of methodesContact" 
+                class="methode-item"
+                [class.selected]="methode.selected"
+                (click)="selectionnerMethodeContact(methode)">
+                <span class="methode-icon">{{ methode.icon }}</span>
+                <span class="methode-nom">{{ methode.nom }}</span>
+                <span class="radio-indicator">
+                  <span class="radio-dot" *ngIf="methode.selected"></span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Informations importantes -->
+          <div class="info-important">
+            <div class="info-icon">💡</div>
+            <div class="info-content">
+              <strong>Information importante :</strong>
+              <p>Vos coordonnées seront partagées avec le prestataire pour organiser la prestation.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Colonne latérale (optionnelle pour informations supplémentaires) -->
+      <div class="sidebar-column">
+        <section class="resume-section">
+          <h3>Résumé de la réservation</h3>
+          
+          <div class="resume-details">
+            <div class="resume-item">
+              <span>Prestataire</span>
+              <span>{{ reservation.prestataire }}</span>
+            </div>
+            <div class="resume-item">
+              <span>Service</span>
+              <span>{{ reservation.service }}</span>
+            </div>
+            <div class="resume-item">
+              <span>Tarif</span>
+              <span>{{ reservation.tarif }} DT</span>
+            </div>
+          </div>
+
+          <!-- Confidentiel -->
+          <div class="confidentiel-info">
+            <div class="secure-icon">🔒</div>
+            <div class="secure-content">
+              <strong>Vos données sont protégées</strong>
+              <p>Nous respectons votre vie privée et protégeons vos informations personnelles.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="coordonnees-actions">
+      <button class="btn btn-cancel" routerLink="/respres" >Annuler</button>
+      <button class="btn btn-reserver" routerLink="/reservation" >Réserver</button>
+    </div>
+  </div>
+</div>

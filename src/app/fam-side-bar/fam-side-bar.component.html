@@ -1,6 +1,6 @@
 <div class="sidebar">
-  <!-- Logo -->
-  <div class="logo-container">
+  <!-- Logo avec lien vers l'accueil -->
+  <div class="logo-container" >
     <img src="../../assets/logo.png" alt="KeepMe Logo" class="logo-image">
   </div>
 
@@ -19,7 +19,8 @@
         *ngFor="let service of services" 
         class="service-item"
         (click)="onServiceClick(service)"
-        [style.--service-color]="service.color">
+        [style.--service-color]="service.color"
+        [class.active]="isRouteActive(service.route || '')">
         <span class="service-icon">{{ service.icon }}</span>
         <span class="service-name">{{ service.name }}</span>
         <span class="service-emoji">{{ service.emoji }}</span>
@@ -32,7 +33,7 @@
     <div 
       *ngFor="let item of menuItems" 
       class="menu-item"
-      [class.active]="item.active"
+      [class.active]="isRouteActive(item.route || '') || item.active"
       (click)="onMenuClick(item)">
       <div class="menu-left">
         <span class="menu-icon">{{ item.icon }}</span>

@@ -17,6 +17,9 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { MessagerieComponent } from './messagerie/messagerie.component';
 import { FormsModule } from '@angular/forms';
 import { MonProfilComponent } from './mon-profil/mon-profil.component';
+import { ReservationPresComponent } from './reservation-pres/reservation-pres.component';
+import { PaiementComponent } from './paiement/paiement.component';
+import { CoordonneesComponent } from './coordonnees/coordonnees.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { MonProfilComponent } from './mon-profil/mon-profil.component';
     Header,
     ReservationComponent,
     MessagerieComponent,
-    MonProfilComponent
+    MonProfilComponent,
+    ReservationPresComponent,
+    PaiementComponent,
+    CoordonneesComponent
   ],
   imports: [
     BrowserModule,
