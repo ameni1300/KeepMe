@@ -1,11 +1,17 @@
+.page-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #fff9f5;
+  font-family: 'Poppins', sans-serif;
+}
+
 .main-content {
   flex: 1;
   background-color: #fff9f5;
   padding: 20px;
   text-align: center;
-  font-family: 'Poppins', sans-serif;
-  margin-left: 150px; /* ✅ Décalage à droite de tout le contenu */
   box-sizing: border-box;
+  margin-left: 0; /* ✅ Supprimer le margin-left car le sidebar est maintenant à côté */
 }
 
 /* ✅ Bandeau du haut centré */
@@ -54,4 +60,51 @@
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .page-container {
+    flex-direction: column;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 15px;
+  }
+
+  .header {
+    width: 95%;
+    padding: 12px;
+  }
+
+  .header h2 {
+    font-size: 20px;
+  }
+
+  .profile-icon {
+    right: 20px;
+    padding: 8px;
+  }
+
+  .calendar-img {
+    width: 95%;
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .profile-icon {
+    position: static;
+    margin-top: 10px;
+  }
+
+  .header h2 {
+    font-size: 18px;
+  }
 }

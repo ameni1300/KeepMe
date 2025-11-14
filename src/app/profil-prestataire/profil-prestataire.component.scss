@@ -1,23 +1,33 @@
-.profil-container {
-  flex: 1;
+.page-container {
+  display: flex;
+  min-height: 100vh;
   background-color: #fff9f5;
-  padding: 30px 60px;
   font-family: 'Poppins', sans-serif;
-  color: #333;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-gap: 20px;
 }
 
-/* ===== HEADER ===== */
+.profil-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* ===== PROFIL CONTAINER ===== */
+.profil-container {
+  background-color: #fff9f5;
+  padding: 30px 40px;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+/* ===== HEADER PROFIL ===== */
 .profil-header {
-  grid-column: 1 / span 2;
   display: flex;
   align-items: center;
   background-color: #fde9df;
   border-radius: 20px;
   padding: 20px 30px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .profil-photo {
@@ -30,6 +40,7 @@
 
 .profil-info h2 {
   margin: 0;
+  font-size: 24px;
 }
 
 .profil-rating span,
@@ -39,12 +50,20 @@
 }
 
 .profil-rating {
-  margin-top: 5px;
+  margin-top: 8px;
 }
 
 .profil-details {
   color: #444;
-  margin-top: 8px;
+  margin-top: 10px;
+}
+
+/* ===== GRID PROFIL ===== */
+.profil-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  margin-bottom: 40px;
 }
 
 /* ===== SECTIONS ===== */
@@ -53,51 +72,62 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .profil-section h3 {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   font-size: 18px;
+  color: #333;
+}
+
+.profil-section ul {
+  padding-left: 20px;
+}
+
+.profil-section li {
+  margin-bottom: 8px;
 }
 
 /* ===== CÔTÉ DROIT ===== */
-.profil-side {
+.profil-right {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
 
 .box {
   background: white;
   border: 1px solid #ddd;
   border-radius: 10px;
-  padding: 15px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .box h4 {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   font-size: 16px;
+  color: #333;
 }
 
 .box a {
   text-decoration: none;
-  color: black;
+  color: #ff7b54;
+  font-weight: 500;
+}
+
+.box a:hover {
+  text-decoration: underline;
 }
 
 /* ===== AVIS CLIENTS ===== */
-.profil-avis {
-  grid-column: 1 / span 2;
-  background: white;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
 .avis {
   display: flex;
   align-items: flex-start;
   margin-top: 15px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
 }
 
 .avis-photo {
@@ -105,17 +135,19 @@
   height: 50px;
   border-radius: 50%;
   margin-right: 15px;
+  object-fit: cover;
 }
 
 .avis-text p {
   margin: 5px 0 0 0;
   font-size: 14px;
+  color: #555;
 }
 
-/* ===== CONTAINER PRINCIPAL ===== */
+/* ===== SECTION ÉDITION PROFIL ===== */
 .main-content {
   background-color: #fff9f5;
-  padding: 30px 60px;
+  padding: 30px 40px;
   font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
 }
@@ -175,17 +207,18 @@
   font-size: 16px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .upload-box:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-  cursor: pointer;
 }
 
 .upload-box i {
   font-size: 50px;
   margin-bottom: 10px;
+  color: #ff7b54;
 }
 
 /* ===== ANNONCE DE TRAVAIL ===== */
@@ -196,16 +229,19 @@
   border-radius: 20px;
   padding: 25px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
 }
 
 .annonce-section h3 {
-  grid-column: 1 / span 2;
   font-weight: 600;
   font-size: 18px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.annonce-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
 }
 
 /* ===== CHAMPS ET INPUTS ===== */
@@ -213,6 +249,7 @@ label {
   font-weight: 600;
   display: block;
   margin-bottom: 8px;
+  color: #333;
 }
 
 textarea,
@@ -220,39 +257,52 @@ input[type="text"] {
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 15px;
-  padding: 10px;
+  padding: 12px;
   font-family: inherit;
   resize: none;
+  box-sizing: border-box;
+  margin-bottom: 20px;
 }
 
 textarea {
-  height: 80px;
+  height: 100px;
+}
+
+textarea:focus,
+input[type="text"]:focus {
+  outline: none;
+  border-color: #ff7b54;
+  box-shadow: 0 0 0 2px rgba(255, 123, 84, 0.2);
 }
 
 /* ===== SECTION PRIX ===== */
 .price-input {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .price-input input {
-  width: 100px;
+  width: 120px;
   text-align: center;
   border-radius: 20px;
+  font-weight: 600;
 }
 
 .price-input button {
   border: none;
-  background-color: #fde9df;
-  padding: 5px 10px;
+  background-color: #ff7b54;
+  color: white;
+  padding: 8px 12px;
   border-radius: 50%;
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
 }
 
 .price-input button:hover {
-  background-color: #f8cdbb;
+  background-color: #e56a42;
+  transform: scale(1.1);
 }
 
 /* ===== MAP ET DISPONIBILITÉ ===== */
@@ -260,16 +310,100 @@ textarea {
   width: 100%;
   border-radius: 15px;
   border: 1px solid #ccc;
+  height: 150px;
+  object-fit: cover;
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
+  .profil-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .annonce-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .profil-container,
+  .main-content {
+    padding: 20px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-container {
+    flex-direction: column;
+  }
+
+  .profil-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .profil-photo {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .profil-rating,
+  .profil-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
   .section-ajout {
     flex-direction: column;
     align-items: center;
+    gap: 20px;
   }
 
-  .annonce-section {
-    grid-template-columns: 1fr;
+  .upload-box {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .header {
+    width: 95%;
+    padding: 12px;
+  }
+
+  .header h2 {
+    font-size: 18px;
+  }
+
+  .profile-icon {
+    right: 20px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profil-container,
+  .main-content {
+    padding: 15px 20px;
+  }
+
+  .profil-header {
+    padding: 15px;
+  }
+
+  .profil-photo {
+    width: 70px;
+    height: 70px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .profile-icon {
+    position: static;
+    margin-top: 10px;
   }
 }

@@ -6,12 +6,15 @@
   flex-direction: column;
   align-items: center;
   padding: 25px 15px;
-  min-height: 100vh; /* ✅ s’adapte à la page (au lieu de height fixe) */
+  min-height: 100vh;
   font-family: 'Poppins', sans-serif;
   border-radius: 0 30px 30px 0;
   border-right: 2px solid #f5d2c3;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
   box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 /* ===== LOGO ===== */
@@ -99,25 +102,33 @@ li.active i {
 
 @media (max-width: 700px) {
   .sidebar {
-    flex-direction: row;
-    justify-content: space-around;
     width: 100%;
-    height: auto;
+    min-height: auto;
     border-radius: 0;
     border-right: none;
     border-bottom: 2px solid #f5d2c3;
-    box-shadow: none;
+    position: relative;
   }
 
   ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 10px;
   }
 
   li {
-    margin: 10px;
-    font-size: 15px;
+    margin: 5px;
+    font-size: 14px;
+    padding: 8px 12px;
     transform: none !important;
+  }
+
+  .logo {
+    margin-bottom: 20px;
+  }
+
+  .logo .icon {
+    width: 120px;
   }
 }

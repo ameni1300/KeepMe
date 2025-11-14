@@ -1,142 +1,158 @@
-<div class="profil-container">
-  <!-- En-tête profil -->
-  <div class="profil-header">
-    <img src="assets/profile-photo.avif" alt="photo" class="profil-photo">
-    <div class="profil-info">
-      <h2>Ouday Messaadi</h2>
-      <div class="profil-rating">
-        <span>⭐ 4/5</span>
-        <span><i class="fa fa-clock"></i> 20/jour</span>
-        <span><i class="fa fa-calendar-check"></i> 7/7</span>
+<div class="page-container">
+  <!-- Sidebar à gauche -->
+  <app-sidebar-prestataire></app-sidebar-prestataire>
+
+  <!-- Contenu principal à droite -->
+  <div class="profil-main-content">
+    <!-- Section profil en haut -->
+    <div class="profil-container">
+      <!-- En-tête profil -->
+      <div class="profil-header">
+        <img src="assets/profile-photo.avif" alt="photo" class="profil-photo">
+        <div class="profil-info">
+          <h2>Ouday Messaadi</h2>
+          <div class="profil-rating">
+            <span>⭐ 4/5</span>
+            <span><i class="fa fa-clock"></i> 20/jour</span>
+            <span><i class="fa fa-calendar-check"></i> 7/7</span>
+          </div>
+          <div class="profil-details">
+            <span>25 ans</span>
+            <span><i class="fa fa-phone"></i> +216 92172 893</span>
+            <span><i class="fa fa-map-marker-alt"></i> Ariana</span>
+          </div>
+        </div>
       </div>
-      <div class="profil-details">
-        <span>25 ans</span>
-        <span><i class="fa fa-phone"></i> +216 92172 893</span>
-        <span><i class="fa fa-map-marker-alt"></i> Ariana</span>
-      </div>
-    </div>
-  </div>
 
-  <!-- À propos -->
-  <div class="profil-section">
-    <h3>À propos de moi :</h3>
-    <p>
-      Bonjour, je m'appelle Ouday, passionné depuis toujours par les animaux 🐾.<br>
-      J’ai grandi entouré de chiens, de chats et même de lapins, et j’adore prendre soin d’eux comme s’ils étaient les miens.<br>
-      Sérieux, attentionné et à l’écoute, je veille à ce que vos compagnons se sentent en confiance,
-      qu’il s’agisse d’une promenade, d’une garde à domicile ou simplement d’un moment de jeu.
-    </p>
-  </div>
+      <!-- Grille du contenu profil -->
+      <div class="profil-grid">
+        <!-- Colonne gauche -->
+        <div class="profil-left">
+          <!-- À propos -->
+          <div class="profil-section">
+            <h3>À propos de moi :</h3>
+            <p>
+              Bonjour, je m'appelle Ouday, passionné depuis toujours par les animaux 🐾.<br>
+              J'ai grandi entouré de chiens, de chats et même de lapins, et j'adore prendre soin d'eux comme s'ils étaient les miens.<br>
+              Sérieux, attentionné et à l'écoute, je veille à ce que vos compagnons se sentent en confiance,
+              qu'il s'agisse d'une promenade, d'une garde à domicile ou simplement d'un moment de jeu.
+            </p>
+          </div>
 
-  <!-- Services proposés -->
-  <div class="profil-section">
-    <h3>Services proposés</h3>
-    <ul>
-      <li>Sorties de 30 minutes dans un environnement sûr</li>
-      <li>Surveillance et soins de vos animaux à domicile (repas, jeux, compagnie)</li>
-      <li>Administration de médicaments, nettoyage et suivi santé simple</li>
-    </ul>
-  </div>
+          <!-- Services proposés -->
+          <div class="profil-section">
+            <h3>Services proposés</h3>
+            <ul>
+              <li>Sorties de 30 minutes dans un environnement sûr</li>
+              <li>Surveillance et soins de vos animaux à domicile (repas, jeux, compagnie)</li>
+              <li>Administration de médicaments, nettoyage et suivi santé simple</li>
+            </ul>
+          </div>
 
-  <!-- Partie droite (études, langues, CV) -->
-  <div class="profil-side">
-    <div class="box">
-      <h4>Niveau d’étude</h4>
-      <p><strong>2021–2022</strong><br>
-        Formation en comportement et nutrition animale (module universitaire)
-      </p>
-    </div>
+          <!-- Avis clients -->
+          <div class="profil-section">
+            <h3>Avis d'autres clients</h3>
+            <div class="avis">
+              <img src="assets/client1.jpg" alt="Souad" class="avis-photo">
+              <div class="avis-text">
+                <strong>Souad ⭐ 4/5</strong><br>
+                <p>Ouday a pris soin de mon chien Max pendant tout un week-end. 
+                Il m'envoyait des photos chaque jour et Max avait l'air super heureux 🐾.
+                Très ponctuel et attentionné, je recommande à 100% !</p>
+              </div>
+            </div>
 
-    <div class="box">
-      <h4>Langues parlées</h4>
-      <ul>
-        <li>Arabe <span>(Langue maternelle)</span></li>
-        <li>Français <span>(B2)</span></li>
-        <li>Anglais <span>(B2)</span></li>
-      </ul>
-    </div>
+            <div class="avis">
+              <img src="assets/client2.jpg" alt="Eya" class="avis-photo">
+              <div class="avis-text">
+                <strong>Eya Ziri ⭐ 4/5</strong><br>
+                <p>Toujours ponctuel et à l'écoute. Excellent service !</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <div class="box">
-      <h4>CV</h4>
-      <a href="assets/EyaZiri-CV.pdf" download>
-        EyaZiri-CV.pdf <i class="fa fa-download"></i>
-      </a>
-    </div>
-  </div>
+        <!-- Colonne droite -->
+        <div class="profil-right">
+          <div class="box">
+            <h4>Niveau d'étude</h4>
+            <p><strong>2021-2022</strong><br>
+              Formation en comportement et nutrition animale (module universitaire)
+            </p>
+          </div>
 
-  <!-- Avis clients -->
-  <div class="profil-avis">
-    <h3>Avis d’autres clients</h3>
+          <div class="box">
+            <h4>Langues parlées</h4>
+            <ul>
+              <li>Arabe <span>(Langue maternelle)</span></li>
+              <li>Français <span>(B2)</span></li>
+              <li>Anglais <span>(B2)</span></li>
+            </ul>
+          </div>
 
-    <div class="avis">
-      <img src="assets/client1.jpg" alt="Souad" class="avis-photo">
-      <div class="avis-text">
-        <strong>Souad ⭐ 4/5</strong><br>
-        <p>Ouday a pris soin de mon chien Max pendant tout un week-end. 
-        Il m’envoyait des photos chaque jour et Max avait l’air super heureux 🐾.
-        Très ponctuel et attentionné, je recommande à 100% !</p>
-      </div>
-    </div>
-
-    <div class="avis">
-      <img src="assets/client2.jpg" alt="Eya" class="avis-photo">
-      <div class="avis-text">
-        <strong>Eya Ziri ⭐ 4/5</strong><br>
-        <p>Toujours ponctuel et à l’écoute. Excellent service !</p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="main-content">
-
-  <!-- ======== HEADER (bandeau du haut) ======== -->
-  <div class="header">
-    <h2><i class="fa fa-leaf"></i> Un nouveau look pour votre profil <i class="fa fa-leaf"></i></h2>
-    <div class="profile-icon">
-      <i class="fa fa-user"></i>
-    </div>
-  </div>
-
-  <!-- ======== SECTION AJOUTS (certif & photo) ======== -->
-  <div class="section-ajout">
-    <div class="upload-box">
-      <label>Ajouter une certification :</label>
-      <i class="fa fa-cloud-upload"></i>
-    </div>
-
-    <div class="upload-box">
-      <label>Ajouter une Photo :</label>
-      <i class="fa fa-image"></i>
-    </div>
-  </div>
-
-  <!-- ======== SECTION ANNONCE ======== -->
-  <div class="annonce-section">
-    <h3>Ajouter une Annonce de travail :</h3>
-
-    <!-- Colonne gauche -->
-    <div>
-      <label for="description">Votre description :</label>
-      <textarea id="description" placeholder="Décrivez votre service..."></textarea>
-
-      <label for="prix">Coût de votre service par jour :</label>
-      <div class="price-input">
-        <input type="text" id="prix" placeholder="DT">
-        <button>-</button>
-        <button>+</button>
+          <div class="box">
+            <h4>CV</h4>
+            <a href="assets/EyaZiri-CV.pdf" download>
+              EyaZiri-CV.pdf <i class="fa fa-download"></i>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Colonne droite -->
-    <div>
-      <label for="disponibilite">Date de disponibilité :</label>
-      <input type="text" id="disponibilite" placeholder="Sélectionnez vos dates">
+    <!-- Section édition du profil en bas -->
+    <div class="main-content">
+      <!-- ======== HEADER (bandeau du haut) ======== -->
+      <div class="header">
+        <h2><i class="fa fa-leaf"></i> Un nouveau look pour votre profil <i class="fa fa-leaf"></i></h2>
+        <div class="profile-icon">
+          <i class="fa fa-user"></i>
+        </div>
+      </div>
 
-      <label for="map">Localisation de disponibilité :</label>
-      <div class="map-box">
-        <img src="assets/map.png" alt="Carte de disponibilité" width="50" height="150">
+      <!-- ======== SECTION AJOUTS (certif & photo) ======== -->
+      <div class="section-ajout">
+        <div class="upload-box">
+          <label>Ajouter une certification :</label>
+          <i class="fa fa-cloud-upload"></i>
+        </div>
+
+        <div class="upload-box">
+          <label>Ajouter une Photo :</label>
+          <i class="fa fa-image"></i>
+        </div>
+      </div>
+
+      <!-- ======== SECTION ANNONCE ======== -->
+      <div class="annonce-section">
+        <h3>Ajouter une Annonce de travail :</h3>
+
+        <div class="annonce-grid">
+          <!-- Colonne gauche -->
+          <div class="annonce-left">
+            <label for="description">Votre description :</label>
+            <textarea id="description" placeholder="Décrivez votre service..."></textarea>
+
+            <label for="prix">Coût de votre service par jour :</label>
+            <div class="price-input">
+              <input type="text" id="prix" placeholder="DT">
+              <button>-</button>
+              <button>+</button>
+            </div>
+          </div>
+
+          <!-- Colonne droite -->
+          <div class="annonce-right">
+            <label for="disponibilite">Date de disponibilité :</label>
+            <input type="text" id="disponibilite" placeholder="Sélectionnez vos dates">
+
+            <label for="map">Localisation de disponibilité :</label>
+            <div class="map-box">
+              <img src="assets/map.png" alt="Carte de disponibilité">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
 </div>

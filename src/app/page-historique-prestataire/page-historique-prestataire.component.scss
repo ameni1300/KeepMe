@@ -1,20 +1,26 @@
+.page-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #fff9f5;
+  font-family: 'Poppins', sans-serif;
+}
+
 .historique-container {
   flex: 1;
   background-color: #fff9f5;
-  padding: 30px 60px;
+  padding: 30px 40px;
   overflow-y: auto;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
-  align-items: center; /* centre horizontalement */
-  justify-content: center; /* centre verticalement */
-  min-height: 100vh; /* pour occuper tout l’écran */
-
-  /* ✅ Décale tout le contenu de 200px vers la droite */
-  margin-left: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
 
   .header {
     text-align: center;
     margin-bottom: 40px;
+    width: 100%;
 
     h1 {
       color: #333;
@@ -28,6 +34,7 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
+    width: 100%;
     max-width: 900px;
   }
 
@@ -64,6 +71,7 @@
           height: 90px;
           border-radius: 10px;
           object-fit: cover;
+          border: 2px solid #fde9df;
         }
 
         .client-name {
@@ -83,6 +91,7 @@
         font-size: 16px;
         font-weight: 600;
         transition: all 0.3s ease;
+        font-family: 'Poppins', sans-serif;
 
         &:hover {
           background: #ff7b54;
@@ -105,9 +114,13 @@
         gap: 8px;
         color: #333;
         font-size: 16px;
+        background: #f8f9fa;
+        padding: 8px 15px;
+        border-radius: 10px;
+        border: 1px solid #e9ecef;
 
         i {
-          color: #555;
+          color: #ff7b54;
         }
       }
     }
@@ -125,9 +138,19 @@
 }
 
 /* Responsive */
-@media (max-width: 700px) {
+@media (max-width: 1024px) {
   .historique-container {
-    padding: 20px;
+    padding: 20px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-container {
+    flex-direction: column;
+  }
+
+  .historique-container {
+    padding: 15px;
   }
 
   .client-section {
@@ -136,9 +159,58 @@
       align-items: flex-start;
       gap: 15px;
 
+      .client-info {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+      }
+
       .voir-rating-btn {
-        align-self: flex-end;
+        align-self: stretch;
+        text-align: center;
       }
     }
+
+    .client-details {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+
+      .detail-line {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .historique-container {
+    padding: 10px;
+  }
+
+  .header {
+    h1 {
+      font-size: 28px !important;
+    }
+  }
+
+  .client-photo {
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+  .client-name {
+    font-size: 18px !important;
+  }
+
+  .detail-line {
+    font-size: 14px !important;
+    padding: 6px 12px !important;
+  }
+
+  .voir-rating-btn {
+    font-size: 14px !important;
+    padding: 8px 20px !important;
   }
 }

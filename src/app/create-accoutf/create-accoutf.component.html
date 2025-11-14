@@ -561,7 +561,7 @@
               </svg>
             </button>
             
-            <button type="submit" class="action-btn primary" *ngIf="currentStep === 3" [disabled]="!isStep3Valid()">
+            <button routerLink="/accueil" type="submit" class="action-btn primary" *ngIf="currentStep === 3" [disabled]="!isStep3Valid()">
               Valider
             </button>
           </div>
