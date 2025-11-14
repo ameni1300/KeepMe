@@ -1,0 +1,83 @@
+<div class="messages-container">
+  <div class="header">
+    <h1>Messages</h1>
+    <p>Gérez vos conversations avec les clients</p>
+  </div>
+
+  <div class="messages-content">
+    <div class="contacts-sidebar">
+      <h3>Vos messages avec les clients</h3>
+      <div class="contacts-list">
+        <div class="contact-item">
+          <input type="checkbox" id="chatcher" class="contact-checkbox">
+          <label for="chatcher" class="contact-label">
+            <span class="contact-name">Chatcher</span>
+          </label>
+        </div>
+        
+        <div class="contact-item active">
+          <input type="checkbox" id="sousad" class="contact-checkbox" checked>
+          <label for="sousad" class="contact-label">
+            <span class="contact-name">Sousad Ismail</span>
+          </label>
+        </div>
+        
+        <div class="contact-item">
+          <input type="checkbox" id="other" class="contact-checkbox">
+          <label for="other" class="contact-label">
+            <span class="contact-name">...</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-area">
+      <div class="chat-header">
+        <div class="current-contact">
+          <div class="contact-avatar">SI</div>
+          <div class="contact-info">
+            <h4>Sousad Ismail</h4>
+            <span class="status">En ligne</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="messages-list">
+        <div class="message received">
+          <div class="message-content">
+            <p>Bonjour ! Je suis intéressé par vos services de pet-sitting pour mon chien.</p>
+            <span class="message-time">10:30</span>
+          </div>
+        </div>
+        
+        <div class="message sent">
+          <div class="message-content">
+            <p>Bonjour ! Je serais ravi de m'occuper de votre chien. Pouvez-vous me donner plus de détails ?</p>
+            <span class="message-time">10:32</span>
+          </div>
+        </div>
+        
+        <div class="message received">
+          <div class="message-content">
+            <p>J'ai un golden retriever de 2 ans, très gentil. J'aurais besoin de vos services du 20 au 22 décembre.</p>
+            <span class="message-time">10:33</span>
+          </div>
+        </div>
+        
+        <div class="message sent">
+          <div class="message-content">
+            <p>Parfait ! Ces dates sont disponibles. On peut discuter des détails ?</p>
+            <span class="message-time">10:35</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="message-input">
+        <input type="text" placeholder="Tapez votre message...">
+        <button class="send-btn">
+          <i class="fa fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

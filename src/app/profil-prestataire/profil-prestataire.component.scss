@@ -1,0 +1,275 @@
+.profil-container {
+  flex: 1;
+  background-color: #fff9f5;
+  padding: 30px 60px;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 20px;
+}
+
+/* ===== HEADER ===== */
+.profil-header {
+  grid-column: 1 / span 2;
+  display: flex;
+  align-items: center;
+  background-color: #fde9df;
+  border-radius: 20px;
+  padding: 20px 30px;
+  margin-bottom: 20px;
+}
+
+.profil-photo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 25px;
+}
+
+.profil-info h2 {
+  margin: 0;
+}
+
+.profil-rating span,
+.profil-details span {
+  margin-right: 15px;
+  font-size: 14px;
+}
+
+.profil-rating {
+  margin-top: 5px;
+}
+
+.profil-details {
+  color: #444;
+  margin-top: 8px;
+}
+
+/* ===== SECTIONS ===== */
+.profil-section {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 15px;
+}
+
+.profil-section h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+/* ===== CÔTÉ DROIT ===== */
+.profil-side {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.box {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.box h4 {
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.box a {
+  text-decoration: none;
+  color: black;
+}
+
+/* ===== AVIS CLIENTS ===== */
+.profil-avis {
+  grid-column: 1 / span 2;
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.avis {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 15px;
+}
+
+.avis-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.avis-text p {
+  margin: 5px 0 0 0;
+  font-size: 14px;
+}
+
+/* ===== CONTAINER PRINCIPAL ===== */
+.main-content {
+  background-color: #fff9f5;
+  padding: 30px 60px;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
+/* ===== BANDEAU DU HAUT ===== */
+.header {
+  background-color: #fde9df;
+  border-radius: 50px;
+  margin: 20px auto;
+  width: 90%;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.header i {
+  color: #8bc34a;
+  margin: 0 10px;
+}
+
+.profile-icon {
+  position: absolute;
+  right: 30px;
+  background-color: white;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== SECTION AJOUT ===== */
+.section-ajout {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.upload-box {
+  background-color: #fde9df;
+  border: 1px solid #d9b6a3;
+  border-radius: 20px;
+  width: 280px;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.upload-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  cursor: pointer;
+}
+
+.upload-box i {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+/* ===== ANNONCE DE TRAVAIL ===== */
+.annonce-section {
+  margin-top: 40px;
+  background-color: #fde9df;
+  border: 1px solid #d9b6a3;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.annonce-section h3 {
+  grid-column: 1 / span 2;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+/* ===== CHAMPS ET INPUTS ===== */
+label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+}
+
+textarea,
+input[type="text"] {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 10px;
+  font-family: inherit;
+  resize: none;
+}
+
+textarea {
+  height: 80px;
+}
+
+/* ===== SECTION PRIX ===== */
+.price-input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price-input input {
+  width: 100px;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.price-input button {
+  border: none;
+  background-color: #fde9df;
+  padding: 5px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.price-input button:hover {
+  background-color: #f8cdbb;
+}
+
+/* ===== MAP ET DISPONIBILITÉ ===== */
+.map-box img {
+  width: 100%;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .section-ajout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .annonce-section {
+    grid-template-columns: 1fr;
+  }
+}

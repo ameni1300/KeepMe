@@ -1,0 +1,57 @@
+.main-content {
+  flex: 1;
+  background-color: #fff9f5;
+  padding: 20px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  margin-left: 150px; /* ✅ Décalage à droite de tout le contenu */
+  box-sizing: border-box;
+}
+
+/* ✅ Bandeau du haut centré */
+.header {
+  background-color: #fde9df;
+  border-radius: 50px;
+  margin: 20px auto;
+  width: 90%;
+  padding: 15px;
+  display: flex;
+  justify-content: center; /* Centrer le texte horizontalement */
+  align-items: center;     /* Centrer verticalement */
+  position: relative;      /* Pour positionner l'icône à droite */
+}
+
+/* ✅ Texte centré */
+.header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+/* ✅ Icône profil à droite */
+.profile-icon {
+  position: absolute;
+  right: 30px;
+  background-color: white;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.profile-icon i {
+  font-size: 20px;
+}
+
+/* ✅ Calendrier réduit et bien centré */
+.calendar-container {
+  margin-top: 40px;
+}
+
+.calendar-img {
+  width: 90%;            /* moins large */
+  height: auto;          /* garde les proportions */
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-top: 20px;
+}
