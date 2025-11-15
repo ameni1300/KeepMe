@@ -2,8 +2,8 @@
 // VARIABLES & MIXINS
 // =============================================
 $primary-color: #e0cdb9;
-$secondary-color: #8b7355;
-$accent-color: #e3a03b;
+$secondary-color: #ea6a14;
+$accent-color: #fec77e;
 $text-dark: #2d3748;
 $text-light: #718096;
 $background-light: #f8f9fa;
@@ -79,7 +79,7 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border-left: 4px solid $accent-color;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(224, 205, 185, 0.9) 0%, rgba(224, 205, 185, 0.7) 100%);
+  background: linear-gradient(135deg, rgba(255, 196, 134, 0.9) 0%, rgba(224, 205, 185, 0.7) 100%);
 
   &::before {
     content: '';
